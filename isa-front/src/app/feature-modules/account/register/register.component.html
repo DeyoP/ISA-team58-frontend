@@ -1,0 +1,103 @@
+<!-- registration.component.html -->
+<div class="registration-card">
+  <div class="card-header">
+    <div class="log">Registration</div>
+  </div>
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input formControlName="email" id="email" type="text">
+      <div *ngIf="emailControl?.invalid && (emailControl?.dirty || emailControl?.touched)" class="error">
+        <div *ngIf="emailControl?.hasError('required')">Email is required.</div>
+        <div *ngIf="emailControl?.hasError('email')">Invalid email format.</div>
+      </div>
+    </div>
+    <!-- Password -->
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <div class="password-input">
+        <input formControlName="password" id="password" [type]="hidePassword ? 'password' : 'text'">
+        <span (click)="togglePasswordVisibility()" class="toggle-password">
+          <i *ngIf="hidePassword" class="fas fa-eye-slash"></i>
+          <i *ngIf="!hidePassword" class="fas fa-eye"></i>
+        </span>
+      </div>
+      <div *ngIf="passwordControl?.invalid && (passwordControl?.dirty || passwordControl?.touched)" class="error">
+        <div *ngIf="passwordControl?.hasError('required')">Password is required.</div>
+        <div *ngIf="passwordControl?.hasError('minlength')">Password must be at least 6 characters.</div>
+      </div>
+    </div>
+    <!-- Confirm Password -->
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password:</label>
+      <input formControlName="confirmPassword" id="confirmPassword" type="password">
+      <div *ngIf="confirmPasswordControl?.invalid && (confirmPasswordControl?.dirty || confirmPasswordControl?.touched)" class="error">
+        <div *ngIf="confirmPasswordControl?.hasError('required')">Confirm Password is required.</div>
+        <div *ngIf="registrationForm.hasError('passwordMismatch')">Passwords do not match.</div>
+      </div>
+    </div>
+    <!-- First Name -->
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input formControlName="firstName" id="firstName" type="text">
+      <div *ngIf="firstNameControl?.invalid && (firstNameControl?.dirty || firstNameControl?.touched)" class="error">
+        <div *ngIf="firstNameControl?.hasError('required')">First Name is required.</div>
+      </div>
+    </div>
+    <!-- Last Name -->
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input formControlName="lastName" id="lastName" type="text">
+      <div *ngIf="lastNameControl?.invalid && (lastNameControl?.dirty || lastNameControl?.touched)" class="error">
+        <div *ngIf="lastNameControl?.hasError('required')">Last Name is required.</div>
+      </div>
+    </div>
+    <!-- City -->
+    <div class="form-group">
+      <label for="city">City:</label>
+      <input formControlName="city" id="city" type="text">
+      <div *ngIf="cityControl?.invalid && (cityControl?.dirty || cityControl?.touched)" class="error">
+        <div *ngIf="cityControl?.hasError('required')">City is required.</div>
+      </div>
+    </div>
+    <!-- Country -->
+    <div class="form-group">
+      <label for="country">Country:</label>
+      <input formControlName="country" id="country" type="text">
+      <div *ngIf="countryControl?.invalid && (countryControl?.dirty || countryControl?.touched)" class="error">
+        <div *ngIf="countryControl?.hasError('required')">Country is required.</div>
+        <div *ngIf="countryControl?.hasError('validLocation')">Please enter a valid location.</div>
+      </div>
+    </div>
+    <!-- Phone Number -->
+    <div class="form-group">
+      <label for="phoneNumber">Phone Number:</label>
+      <input formControlName="phoneNumber" id="phoneNumber" type="text">
+      <div *ngIf="phoneNumberControl?.invalid && (phoneNumberControl?.dirty || phoneNumberControl?.touched)" class="error">
+        <div *ngIf="phoneNumberControl?.hasError('required')">Phone Number is required.</div>
+        <div *ngIf="phoneNumberControl?.hasError('pattern')">Invalid phone number format.</div>
+      </div>
+    </div>
+    <!-- Job -->
+    <div class="form-group">
+      <label for="job">Job:</label>
+      <input formControlName="job" id="job" type="text">
+      <div *ngIf="jobControl?.invalid && (jobControl?.dirty || jobControl?.touched)" class="error">
+        <div *ngIf="jobControl?.hasError('required')">Job is required.</div>
+      </div>
+    </div>
+    <!-- Workplace -->
+    <div class="form-group">
+      <label for="workplace">Workplace:</label>
+      <input formControlName="workplace" id="workplace" type="text">
+      <div *ngIf="workplaceControl?.invalid && (workplaceControl?.dirty || workplaceControl?.touched)" class="error">
+        <div *ngIf="workplaceControl?.hasError('required')">Workplace is required.</div>
+      </div>
+    </div>
+    <!-- Submit Button -->
+    <div class="form-group">
+      <button type="submit" [disabled]="!registrationForm.valid">Register</button>
+    </div>
+  </form>
+</div>
