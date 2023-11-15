@@ -130,7 +130,7 @@
     <div class="form-group">
       <button type="button" *ngIf="currentStep > 0" (click)="prevStep()">Previous</button>
       <button type="button" *ngIf="currentStep < formSteps.length - 1" (click)="nextStep()">Next</button>
-      <button type="submit" [disabled]="!registrationForm.valid">Register</button>
+      <button type="submit" [disabled]="!registrationForm.valid">Send activation link</button>
     </div>
   </form>
 </div>

@@ -15,6 +15,11 @@ export class AccountService {
   private loggedInAccountSubject = new Subject<Account | null>();
   loggedInAccount$: Observable<Account | null> = this.loggedInAccountSubject.asObservable();
 
+  activateAccount(token: string): Observable<string> {
+    const activationUrl = `${this.apiUrl}/activate/${token}`;
+    return this.http.get(activationUrl, { responseType: 'text' });
+  }
+
   getAccountById(id: number): Observable<Account> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<Account>(url);
@@ -26,5 +31,13 @@ export class AccountService {
 
   getAllAccounts(): Observable<Account[]> {
     return this.http.get<Account[]>(this.apiUrl);
+  }
+
+  setLoggedInAccount(account: Account | null): void {
+    this.loggedInAccountSubject.next(account);
+  }
+
+  getLoggedInAccount(): Observable<Account | null> {
+    return this.loggedInAccount$;
   }
 }
