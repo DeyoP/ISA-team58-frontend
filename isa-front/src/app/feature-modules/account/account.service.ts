@@ -25,8 +25,8 @@ export class AccountService {
     return this.http.get<Account>(url);
   }
 
-  saveAccount(account: Account): Observable<void> {
-    return this.http.post<void>(this.apiUrl, account);
+  saveRegisteredUser(account: Account): Observable<void> {
+    return this.http.post<void>('http://localhost:5555/registeredUsers', account);
   }
 
   getAllAccounts(): Observable<Account[]> {

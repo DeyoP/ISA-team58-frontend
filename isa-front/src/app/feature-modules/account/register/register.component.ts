@@ -1,7 +1,7 @@
 // register.component.ts
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Account } from 'src/app/shared/model/account.model';
+import { RegisteredUser } from 'src/app/shared/model/registered-user.model';
 import { AccountService } from '../account.service';
 
 @Component({
@@ -107,7 +107,7 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     this.errorMessage = null;
     if (this.registrationForm.valid) {
-      const formData: Account = {
+      const formData: RegisteredUser = {
         firstName: this.registrationForm.value.firstName,
         lastName: this.registrationForm.value.lastName,
         city: this.registrationForm.value.city,
@@ -122,7 +122,7 @@ export class RegisterComponent implements OnInit {
         isDeleted:false,
       };
 
-      this.service.saveAccount(formData).subscribe(
+      this.service.saveRegisteredUser(formData).subscribe(
         () => {
           console.log('Account saved successfully!');
         },
