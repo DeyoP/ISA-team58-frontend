@@ -14,7 +14,9 @@ export class RegisterComponent implements OnInit {
   hidePassword: boolean = true;
   hideConfirmPassword: boolean = true;
   currentStep: number = 0;
+  errorMessage: string | null = null;
   formSteps = ['personalInfo', 'locationInfo', 'contactWorkInfo', 'passwordInfo', 'emailInfo'];
+  
 
   constructor(private fb: FormBuilder, private service: AccountService) {
     this.registrationForm = this.fb.group({
@@ -103,6 +105,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
+    this.errorMessage = null;
     if (this.registrationForm.valid) {
       const formData: Account = {
         firstName: this.registrationForm.value.firstName,
@@ -124,7 +127,15 @@ export class RegisterComponent implements OnInit {
           console.log('Account saved successfully!');
         },
         (error) => {
-          console.error('Error saving account:', error);
+          if (error.status === 400) {
+            // Bad request, email already exists
+            console.error('Email already exists:', error.error);
+            // Update your UI to display an error message
+            // For example, you can add a property to the component to hold the error message
+            this.errorMessage = 'Email already exists';
+          } else {
+            console.error('Error saving account:', error);
+          }
         }
       );
     }

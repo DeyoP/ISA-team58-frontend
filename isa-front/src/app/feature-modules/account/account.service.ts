@@ -40,4 +40,12 @@ export class AccountService {
   getLoggedInAccount(): Observable<Account | null> {
     return this.loggedInAccount$;
   }
+
+  login(email: string, password: string): Observable<string> {
+    const loginUrl = `${this.apiUrl}/login`;
+    const loginRequest = { email, password }; // Create a request body with email and password
+  
+    return this.http.post(loginUrl, loginRequest, { responseType: 'text' });
+  }
+  
 }

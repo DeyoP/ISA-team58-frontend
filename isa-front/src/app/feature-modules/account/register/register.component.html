@@ -132,5 +132,6 @@
       <button type="button" *ngIf="currentStep < formSteps.length - 1" (click)="nextStep()">Next</button>
       <button type="submit" [disabled]="!registrationForm.valid">Send activation link</button>
     </div>
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
   </form>
 </div>

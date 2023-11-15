@@ -12,14 +12,14 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   submitted = false;
   hidePassword = true;
-
+  loginError: string | null = null; 
   constructor(private fb: FormBuilder, private service: AccountService) {}
 
   ngOnInit() {
 
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required]]
     });
   }
 
@@ -33,10 +33,24 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    this.loginError = null; // Reset login error on each submit
 
     if (this.loginForm.valid) {
-      // Your login logic here
-      console.log('Form submitted');
+      const email = this.emailControl?.value;
+      const password = this.passwordControl?.value;
+
+      // Call the login method from the service
+      this.service.login(email, password).subscribe(
+        response => {
+          console.log('Login successful:', response);
+          // Handle successful login, e.g., redirect to a new page
+        },
+        error => {
+          console.error('Login failed:', error);
+          this.loginError = 'Invalid email or password';
+          // Handle login error, e.g., display an error message
+        }
+      );
     }
   }
 
