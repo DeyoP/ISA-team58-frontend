@@ -8,7 +8,7 @@ import { Account } from 'src/app/shared/model/account.model';
 })
 export class AccountService {
 
-  private apiUrl = 'http://localhost:8080/accounts'; 
+  private apiUrl = 'http://localhost:5555/accounts'; 
 
   constructor(private http: HttpClient) { }
   
