@@ -17,16 +17,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
-    this.service.getWelcomeMessage().subscribe(
-      data => {
-        let welcomeMessage = data.message;
-        console.log(welcomeMessage)
-      },
-      error => {
-        console.error('Error fetching welcome message:', error);
-      }
-    );
-
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]

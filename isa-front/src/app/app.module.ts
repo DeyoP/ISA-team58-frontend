@@ -4,22 +4,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './feature-modules/account/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RegisterComponent } from './feature-modules/account/register/register.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http'; // Updated import statement
+import { AccountModule } from './feature-modules/account/account.module';
+
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    ],
+    AppComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    AccountModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

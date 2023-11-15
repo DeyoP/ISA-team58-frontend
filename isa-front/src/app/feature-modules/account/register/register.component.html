@@ -1,18 +1,85 @@
 <!-- registration.component.html -->
 <div class="registration-card">
   <div class="card-header">
-    <div class="log">Registration</div>
+    <div class="log">Registration - Step {{ currentStep + 1 }}</div>
   </div>
   <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-    <!-- Email -->
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input formControlName="email" id="email" type="text">
-      <div *ngIf="emailControl?.invalid && (emailControl?.dirty || emailControl?.touched)" class="error">
-        <div *ngIf="emailControl?.hasError('required')">Email is required.</div>
-        <div *ngIf="emailControl?.hasError('email')">Invalid email format.</div>
+    <!-- Step 1: First Name and Last Name -->
+    <div *ngIf="currentStep === 0">
+      <!-- First Name -->
+      <div class="form-group">
+        <label for="firstName">First Name:</label>
+        <input formControlName="firstName" id="firstName" type="text">
+        <div *ngIf="firstNameControl?.invalid && (firstNameControl?.dirty || firstNameControl?.touched)" class="error">
+          <div *ngIf="firstNameControl?.hasError('required')">First Name is required.</div>
+        </div>
+      </div>
+
+      <!-- Last Name -->
+      <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input formControlName="lastName" id="lastName" type="text">
+        <div *ngIf="lastNameControl?.invalid && (lastNameControl?.dirty || lastNameControl?.touched)" class="error">
+          <div *ngIf="lastNameControl?.hasError('required')">Last Name is required.</div>
+        </div>
       </div>
     </div>
+
+    <!-- Step 2: City and Country -->
+    <div *ngIf="currentStep === 1">
+      <!-- City -->
+      <div class="form-group">
+        <label for="city">City:</label>
+        <input formControlName="city" id="city" type="text">
+        <div *ngIf="cityControl?.invalid && (cityControl?.dirty || cityControl?.touched)" class="error">
+          <div *ngIf="cityControl?.hasError('required')">City is required.</div>
+        </div>
+      </div>
+
+      <!-- Country -->
+      <div class="form-group">
+        <label for="country">Country:</label>
+        <input formControlName="country" id="country" type="text">
+        <div *ngIf="countryControl?.invalid && (countryControl?.dirty || countryControl?.touched)" class="error">
+          <div *ngIf="countryControl?.hasError('required')">Country is required.</div>
+          <div *ngIf="countryControl?.hasError('validLocation')">Please enter a valid location.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Phone Number, Job, and Workplace -->
+    <div *ngIf="currentStep === 2">
+      <!-- Phone Number -->
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number:</label>
+        <input formControlName="phoneNumber" id="phoneNumber" type="text">
+        <div *ngIf="phoneNumberControl?.invalid && (phoneNumberControl?.dirty || phoneNumberControl?.touched)" class="error">
+          <div *ngIf="phoneNumberControl?.hasError('required')">Phone Number is required.</div>
+          <div *ngIf="phoneNumberControl?.hasError('pattern')">Invalid phone number format.</div>
+        </div>
+      </div>
+
+      <!-- Job -->
+      <div class="form-group">
+        <label for="job">Job:</label>
+        <input formControlName="job" id="job" type="text">
+        <div *ngIf="jobControl?.invalid && (jobControl?.dirty || jobControl?.touched)" class="error">
+          <div *ngIf="jobControl?.hasError('required')">Job is required.</div>
+        </div>
+      </div>
+
+      <!-- Workplace -->
+      <div class="form-group">
+        <label for="workplace">Workplace:</label>
+        <input formControlName="workplace" id="workplace" type="text">
+        <div *ngIf="workplaceControl?.invalid && (workplaceControl?.dirty || workplaceControl?.touched)" class="error">
+          <div *ngIf="workplaceControl?.hasError('required')">Workplace is required.</div>
+        </div>
+      </div>
+    </div>
+
+
+    <div *ngIf="currentStep === 3">
     <!-- Password -->
     <div class="form-group">
       <label for="password">Password:</label>
@@ -29,74 +96,40 @@
       </div>
     </div>
     <!-- Confirm Password -->
+    <!-- Confirm Password -->
     <div class="form-group">
       <label for="confirmPassword">Confirm Password:</label>
-      <input formControlName="confirmPassword" id="confirmPassword" type="password">
+      <div class="password-input">
+        <input formControlName="confirmPassword" id="confirmPassword" [type]="hideConfirmPassword ? 'password' : 'text'">
+        <span (click)="toggleConfirmPasswordVisibility()" class="toggle-password">
+          <i *ngIf="hideConfirmPassword" class="fas fa-eye-slash"></i>
+          <i *ngIf="!hideConfirmPassword" class="fas fa-eye"></i>
+        </span>
+      </div>
       <div *ngIf="confirmPasswordControl?.invalid && (confirmPasswordControl?.dirty || confirmPasswordControl?.touched)" class="error">
         <div *ngIf="confirmPasswordControl?.hasError('required')">Confirm Password is required.</div>
-        <div *ngIf="registrationForm.hasError('passwordMismatch')">Passwords do not match.</div>
+        <div *ngIf="confirmPasswordControl?.hasError('passwordMismatch') && (confirmPasswordControl?.dirty || confirmPasswordControl?.touched)" class="error">Passwords do not match.</div>
       </div>
     </div>
-    <!-- First Name -->
-    <div class="form-group">
-      <label for="firstName">First Name:</label>
-      <input formControlName="firstName" id="firstName" type="text">
-      <div *ngIf="firstNameControl?.invalid && (firstNameControl?.dirty || firstNameControl?.touched)" class="error">
-        <div *ngIf="firstNameControl?.hasError('required')">First Name is required.</div>
+
+    </div>
+
+
+    <div *ngIf="currentStep === 4">
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input formControlName="email" id="email" type="text">
+        <div *ngIf="emailControl?.invalid && (emailControl?.dirty || emailControl?.touched)" class="error">
+          <div *ngIf="emailControl?.hasError('required')">Email is required.</div>
+          <div *ngIf="emailControl?.hasError('email')">Invalid email format.</div>
+        </div>
       </div>
     </div>
-    <!-- Last Name -->
+    <!-- Navigation Buttons -->
     <div class="form-group">
-      <label for="lastName">Last Name:</label>
-      <input formControlName="lastName" id="lastName" type="text">
-      <div *ngIf="lastNameControl?.invalid && (lastNameControl?.dirty || lastNameControl?.touched)" class="error">
-        <div *ngIf="lastNameControl?.hasError('required')">Last Name is required.</div>
-      </div>
-    </div>
-    <!-- City -->
-    <div class="form-group">
-      <label for="city">City:</label>
-      <input formControlName="city" id="city" type="text">
-      <div *ngIf="cityControl?.invalid && (cityControl?.dirty || cityControl?.touched)" class="error">
-        <div *ngIf="cityControl?.hasError('required')">City is required.</div>
-      </div>
-    </div>
-    <!-- Country -->
-    <div class="form-group">
-      <label for="country">Country:</label>
-      <input formControlName="country" id="country" type="text">
-      <div *ngIf="countryControl?.invalid && (countryControl?.dirty || countryControl?.touched)" class="error">
-        <div *ngIf="countryControl?.hasError('required')">Country is required.</div>
-        <div *ngIf="countryControl?.hasError('validLocation')">Please enter a valid location.</div>
-      </div>
-    </div>
-    <!-- Phone Number -->
-    <div class="form-group">
-      <label for="phoneNumber">Phone Number:</label>
-      <input formControlName="phoneNumber" id="phoneNumber" type="text">
-      <div *ngIf="phoneNumberControl?.invalid && (phoneNumberControl?.dirty || phoneNumberControl?.touched)" class="error">
-        <div *ngIf="phoneNumberControl?.hasError('required')">Phone Number is required.</div>
-        <div *ngIf="phoneNumberControl?.hasError('pattern')">Invalid phone number format.</div>
-      </div>
-    </div>
-    <!-- Job -->
-    <div class="form-group">
-      <label for="job">Job:</label>
-      <input formControlName="job" id="job" type="text">
-      <div *ngIf="jobControl?.invalid && (jobControl?.dirty || jobControl?.touched)" class="error">
-        <div *ngIf="jobControl?.hasError('required')">Job is required.</div>
-      </div>
-    </div>
-    <!-- Workplace -->
-    <div class="form-group">
-      <label for="workplace">Workplace:</label>
-      <input formControlName="workplace" id="workplace" type="text">
-      <div *ngIf="workplaceControl?.invalid && (workplaceControl?.dirty || workplaceControl?.touched)" class="error">
-        <div *ngIf="workplaceControl?.hasError('required')">Workplace is required.</div>
-      </div>
-    </div>
-    <!-- Submit Button -->
-    <div class="form-group">
+      <button type="button" *ngIf="currentStep > 0" (click)="prevStep()">Previous</button>
+      <button type="button" *ngIf="currentStep < formSteps.length - 1" (click)="nextStep()">Next</button>
       <button type="submit" [disabled]="!registrationForm.valid">Register</button>
     </div>
   </form>
