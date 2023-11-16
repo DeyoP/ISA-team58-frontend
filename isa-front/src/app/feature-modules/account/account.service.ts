@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, tap } from 'rxjs';
 import { Account } from 'src/app/shared/model/account.model';
 
 @Injectable({
@@ -41,11 +41,15 @@ export class AccountService {
     return this.loggedInAccount$;
   }
 
-  login(email: string, password: string): Observable<string> {
+  login(email: string, password: string): Observable<Account> {
     const loginUrl = `${this.apiUrl}/login`;
     const loginRequest = { email, password }; // Create a request body with email and password
   
-    return this.http.post(loginUrl, loginRequest, { responseType: 'text' });
+    return this.http.post<Account>(loginUrl, loginRequest)
+      .pipe(
+        tap((account: Account) => {
+          this.setLoggedInAccount(account);
+        })
+      );
   }
-  
 }

@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
       this.service.login(email, password).subscribe(
         response => {
           console.log('Login successful:', response);
-          // Handle successful login, e.g., redirect to a new page
+          console.log(this.service.getLoggedInAccount());
         },
         error => {
           console.error('Login failed:', error);
