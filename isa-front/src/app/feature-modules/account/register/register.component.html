@@ -128,9 +128,9 @@
     </div>
     <!-- Navigation Buttons -->
     <div class="form-group">
-      <button type="button" *ngIf="currentStep > 0" (click)="prevStep()">Previous</button>
-      <button type="button" *ngIf="currentStep < formSteps.length - 1" (click)="nextStep()">Next</button>
-      <button type="submit" [disabled]="!registrationForm.valid">Send activation link</button>
+      <button class = "registration-button" type="button" *ngIf="currentStep > 0" (click)="prevStep()">Previous</button>
+      <button class = "registration-button" type="button" *ngIf="currentStep < formSteps.length - 1" (click)="nextStep()">Next</button>
+      <button class = "registration-button" type="submit" *ngIf="registrationForm.valid">Send activation link</button>
     </div>
     <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
   </form>
