@@ -6,14 +6,16 @@ import { RegisterComponent } from './feature-modules/account/register/register.c
 import { EditUserComponent } from './feature-modules/account/edit-user/edit-user.component';
 import { CompanyRegistrationComponent } from './feature-modules/system-administrator/company-registration/company-registration.component';
 import { CompanySearchComponent } from './feature-modules/search/company-search/company-search.component';
+import { EquipmentSearchComponent } from './feature-modules/search/equipment-search/equipment-search.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'activate/:token', component: ActivationComponent },
-  { path: 'editUser/:id', component: EditUserComponent},
+  { path: 'editUser/:id', component: EditUserComponent },
   { path: 'company-registration', component: CompanyRegistrationComponent },
-  { path: 'company-search', component: CompanySearchComponent}
+  { path: 'company-search', component: CompanySearchComponent },
+  { path: 'equipment-search', component: EquipmentSearchComponent },
 ];
 
 @NgModule({
