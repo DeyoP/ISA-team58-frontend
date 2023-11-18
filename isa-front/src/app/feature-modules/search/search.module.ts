@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CompanySearchComponent } from './company-search/company-search.component';
-
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -9,7 +9,8 @@ import { CompanySearchComponent } from './company-search/company-search.componen
     CompanySearchComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
   ]
 })
 export class SearchModule { }

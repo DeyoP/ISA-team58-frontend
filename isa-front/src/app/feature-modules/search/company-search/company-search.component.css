@@ -1,27 +1,20 @@
-table {
+.search-container {
+    margin-bottom: 20px;
+  }
+  
+  .company-table {
+    width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    width: auto; /* Allow the table to adjust its width based on content */
-}
-
-th, td {
-    padding: 8px; /* Adjust the padding inside each cell */
+  }
+  
+  .company-table th, .company-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-th {
+  }
+  
+  .company-table th {
     background-color: #f2f2f2;
-}
-
-/* Add some styling to the heading */
-h1 {
-    color: #333;
-    font-family: 'Arial', sans-serif;
-}
-
-/* Optional: Add some styling to the company-search message */
-p {
-    color: green;
-    font-weight: bold;
-}
+  }
+  
