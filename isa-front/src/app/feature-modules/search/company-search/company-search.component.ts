@@ -14,7 +14,15 @@ export class CompanySearchComponent implements OnInit {
   constructor(private service: SearchService) { }
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.service.getAllCompanies().subscribe({
+      next: (result) => {
+        this.companies = result;
+        console.log(result);
+        console.log(this.companies);
+      }
+    });
   }
+
+
 
 }
