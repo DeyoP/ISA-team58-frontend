@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject, tap } from 'rxjs';
 import { Account } from 'src/app/shared/model/account.model';
+import { RegisteredUser } from 'src/app/shared/model/registered-user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,10 @@ export class AccountService {
   getAccountById(id: number): Observable<Account> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<Account>(url);
+  }
+
+  getUserById(id: number): Observable<RegisteredUser> {
+    return this.getAccountById(id) as Observable<RegisteredUser>;
   }
 
   saveRegisteredUser(account: Account): Observable<void> {
@@ -52,4 +57,9 @@ export class AccountService {
         })
       );
   }
+
+  editRegisteredUser(account: Account): Observable<void> {
+    return this.http.put<void>('http://localhost:5555/registeredUser/' + account.id, account);
+  }
+  
 }
