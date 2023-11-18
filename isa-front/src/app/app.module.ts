@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'; // Updated import statement
 import { AccountModule } from './feature-modules/account/account.module';
 import { CompanyRegistrationComponent } from './feature-modules/system-administrator/company-registration/company-registration.component';
+import { SearchModule } from './feature-modules/search/search.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CompanyRegistrationComponent } from './feature-modules/system-administr
     ReactiveFormsModule,
     HttpClientModule,
     AccountModule,
+    SearchModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

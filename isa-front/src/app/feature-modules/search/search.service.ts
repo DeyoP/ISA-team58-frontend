@@ -8,7 +8,7 @@ import { Company } from 'src/app/shared/model/company.model';
 })
 export class SearchService {
 
-  private apiUrl = 'http://localhost:5555/accounts'; 
+  private apiUrl = 'http://localhost:5555/companies'; 
 
   constructor(private http: HttpClient) { }
 

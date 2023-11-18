@@ -1,1 +1,16 @@
 <p>company-search works!</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>City</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of companies">
+            <td>{{c.name}}</td>
+            <td>{{c.city}}</td>
+        </tr>
+    </tbody>
+</table>

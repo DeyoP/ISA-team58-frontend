@@ -17,12 +17,12 @@ export class CompanySearchComponent implements OnInit {
     this.service.getAllCompanies().subscribe({
       next: (result) => {
         this.companies = result;
-        console.log(result);
         console.log(this.companies);
       }
     });
   }
 
+  
 
 
 }
