@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'; // Updated import statement
 import { AccountModule } from './feature-modules/account/account.module';
+import { CompanyModule } from './feature-modules/company/company.module';
+import { EquipmentModule } from './feature-modules/equipment/equipment.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { AccountModule } from './feature-modules/account/account.module';
     ReactiveFormsModule,
     HttpClientModule,
     AccountModule,
+    CompanyModule,
+    EquipmentModule
   ],
   providers: [],
   bootstrap: [AppComponent]
