@@ -1,1 +1,25 @@
-<p>company-search works!</p>
+<div class="search-container">
+    <label for="nameSearch">Name:</label>
+    <input type="text" id="nameSearch" [(ngModel)]="nameSearch" />
+  
+    <label for="citySearch">City:</label>
+    <input type="text" id="citySearch" [(ngModel)]="citySearch" />
+  
+    <button (click)="onSearch(nameSearch, citySearch)">Search</button>
+  </div>
+  
+  <table class="company-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>City</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let company of filteredCompanies">
+        <td>{{ company.name }}</td>
+        <td>{{ company.city }}</td>
+      </tr>
+    </tbody>
+  </table>
+  

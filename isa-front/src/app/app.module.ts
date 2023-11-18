@@ -10,6 +10,7 @@ import { AccountModule } from './feature-modules/account/account.module';
 import { CompanyRegistrationComponent } from './feature-modules/system-administrator/company-registration/company-registration.component';
 import { CompanyModule } from './feature-modules/company/company.module';
 import { EquipmentModule } from './feature-modules/equipment/equipment.module';
+import { SearchModule } from './feature-modules/search/search.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { EquipmentModule } from './feature-modules/equipment/equipment.module';
     HttpClientModule,
     AccountModule,
     CompanyModule,
-    EquipmentModule
+    EquipmentModule,
+    SearchModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
