@@ -64,7 +64,7 @@ export class CompanyOverviewComponent implements OnInit {
       name: this.company.name,
       description: this.company.description,
       address: this.company.address,
-      averageRating: this.company.averageRating
+      averageRating: this.company.rating
     });
   }
   

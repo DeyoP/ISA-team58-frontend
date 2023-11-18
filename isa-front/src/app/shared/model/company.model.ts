@@ -8,7 +8,7 @@ export interface Company {
     description: string;
     address: string;
     city: string;
-    ceritification: string;
+    certification: string;
     rating: number;
     phoneNumber: string;
     equipments: Equipment[]; 

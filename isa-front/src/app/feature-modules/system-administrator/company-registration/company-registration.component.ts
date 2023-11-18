@@ -4,6 +4,7 @@ import { Company } from 'src/app/shared/model/company.model';
 import { SystemAdministratorService } from '../system-administrator.service';
 import { Account } from 'src/app/shared/model/account.model';
 import { AccountService } from '../../account/account.service';
+import { RegisteredUser } from 'src/app/shared/model/registered-user.model';
 
 @Component({
   selector: 'app-company-registration',
@@ -18,25 +19,30 @@ export class CompanyRegistrationComponent implements OnInit {
     city: ['', Validators.required],
     description: [''],
     certification: [''],
-    phoneNumber: ['', Validators.required]
+    phoneNumber: ['', Validators.required],
+    administratorId: [null, Validators.required],
   });
-
-  user: Account | null = null;
 
   constructor(private fb: FormBuilder, private service: SystemAdministratorService, private accountService: AccountService) { }
 
+  nonCompanyAdmins: RegisteredUser[] = []
+
   ngOnInit() {
+    this.accountService.getNonAdmins().subscribe({
+      next: (result) => {
+        this.nonCompanyAdmins = result;console.log(result)
+      }
+    })
   }
 
   onSubmit() {
     if (this.companyForm.valid) {
       const newCompany: Company = this.companyForm.value;
-      newCompany.id = 0;
-      newCompany.administratorId = 0;
+      newCompany.id = 0;console.log(newCompany.administratorId)
+      newCompany.rating = 0;
       this.service.saveCompany(newCompany).subscribe({
         next: () => {}
       });
-      console.log('Company registered:', newCompany);
     }
   }
 }

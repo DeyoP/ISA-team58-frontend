@@ -9,7 +9,7 @@ import { Equipment } from 'src/app/shared/model/equipment.model';
 })
 export class CompanyService {
 
-  private apiUrl = 'http://localhost:5555/company';
+  private apiUrl = 'http://localhost:5555/companies';
 
   constructor(private http: HttpClient) { }
 

@@ -10,7 +10,7 @@
         </li>
     </ul>
 
-    <p class="average-rating">Average rating: {{ company.averageRating }}</p>
+    <p class="average-rating">Average rating: {{ company.rating }}</p>
     
     <button (click)="onEditClicked()">Edit company</button>
     <div *ngIf="shouldRenderCompanyForm">
