@@ -4,4 +4,5 @@ export interface Account {
     password: string;
     isActive: boolean;
     isDeleted: boolean;
+    dtype: String;
 }

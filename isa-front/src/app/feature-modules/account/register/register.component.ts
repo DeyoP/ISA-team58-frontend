@@ -120,6 +120,7 @@ export class RegisterComponent implements OnInit {
         id: 0, // You can set a default value for id or adjust as needed
         isActive:false,
         isDeleted:false,
+        dtype: "registered_user",
       };
 
       this.service.saveRegisteredUser(formData).subscribe(

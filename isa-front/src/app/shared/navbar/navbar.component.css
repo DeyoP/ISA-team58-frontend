@@ -1,0 +1,40 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 80px;
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  box-sizing: border-box;
+  color: white;
+}
+
+.section {
+  width: 100%;
+  text-align: center;
+}
+
+.top {
+  margin-bottom: 20px;
+}
+
+.middle {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; /* Updated to space-evenly for equal spacing */
+}
+
+.icon {
+  margin: 20px 0; /* Adjust the margin to your preference */
+  cursor: pointer;
+}
+
+.bottom {
+  margin-top: 20px;
+}
