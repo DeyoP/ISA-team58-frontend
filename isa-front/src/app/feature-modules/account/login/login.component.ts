@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '../account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   hidePassword = true;
   loginError: string | null = null; 
-  constructor(private fb: FormBuilder, private service: AccountService) {}
+  constructor(private fb: FormBuilder, private service: AccountService, private router: Router) {}
 
   ngOnInit() {
 
@@ -44,6 +45,8 @@ export class LoginComponent implements OnInit {
         response => {
           console.log('Login successful:', response);
           console.log(this.service.getLoggedInAccount());
+          // Handle successful login, e.g., redirect to a new page
+          this.router.navigate(['/']);
         },
         error => {
           console.error('Login failed:', error);

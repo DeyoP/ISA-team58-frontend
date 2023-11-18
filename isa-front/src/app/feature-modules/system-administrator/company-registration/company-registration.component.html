@@ -1,0 +1,22 @@
+<form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name">
+  
+    <label for="address">Address:</label>
+    <input type="text" id="address" formControlName="address">
+  
+    <label for="city">City:</label>
+    <input type="text" id="city" formControlName="city">
+  
+    <label for="description">Description:</label>
+    <textarea id="description" formControlName="description"></textarea>
+  
+    <label for="certification">Certification:</label>
+    <input type="text" id="certification" formControlName="certification">
+  
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="text" id="phoneNumber" formControlName="phoneNumber">
+  
+    <button type="submit" [disabled]="companyForm.invalid">Submit</button>
+  </form>
+  
