@@ -1,0 +1,27 @@
+.container {
+    width: 50%;
+    margin: auto;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .row {
+    margin: 0 -5px;
+  }
+  
+  .col {
+    padding: 0 5px;
+  }
+  
+  button {
+    margin-top: 20px;
+  }
+  

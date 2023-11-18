@@ -7,10 +7,12 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'; // Updated import statement
 import { AccountModule } from './feature-modules/account/account.module';
+import { CompanyRegistrationComponent } from './feature-modules/system-administrator/company-registration/company-registration.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CompanyRegistrationComponent
   ],
   imports: [
     BrowserModule,

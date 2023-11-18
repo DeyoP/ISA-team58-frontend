@@ -4,12 +4,14 @@ import { ActivationComponent } from './feature-modules/account/activation/activa
 import { LoginComponent } from './feature-modules/account/login/login.component';
 import { RegisterComponent } from './feature-modules/account/register/register.component';
 import { EditUserComponent } from './feature-modules/account/edit-user/edit-user.component';
+import { CompanyRegistrationComponent } from './feature-modules/system-administrator/company-registration/company-registration.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'activate/:token', component: ActivationComponent },
-  { path: 'editUser/:id', component: EditUserComponent}
+  { path: 'editUser/:id', component: EditUserComponent},
+  { path: 'company-registration', component: CompanyRegistrationComponent },
 ];
 
 @NgModule({

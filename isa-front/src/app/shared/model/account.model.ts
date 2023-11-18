@@ -2,6 +2,6 @@ export interface Account {
     id: number;
     email: string;
     password: string;
-    isActive:boolean;
+    isActive: boolean;
     isDeleted: boolean;
 }
