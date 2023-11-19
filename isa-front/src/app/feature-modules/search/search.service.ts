@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Company } from 'src/app/shared/model/company.model';
+import { Equipment } from 'src/app/shared/model/equipment.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,8 @@ export class SearchService {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<Company>(url);
   }
-
   
+  getAllEquipment(): Observable<Equipment[]> {
+    return this.http.get<Equipment[]>('http://localhost:5555/equipment/getAll');
+  }
 }
