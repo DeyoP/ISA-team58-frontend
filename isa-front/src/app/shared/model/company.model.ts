@@ -1,11 +1,15 @@
+import { Equipment } from "./equipment.model";
+
+
 export interface Company {
     id: number;
     administratorId: number;
     name: string;
+    description: string;
     address: string;
     city: string;
-    description: string;
-    ceritification: string;
-    phoneNumber: string;
+    certification: string;
     rating: number;
+    phoneNumber: string;
+    equipments: Equipment[]; 
 }

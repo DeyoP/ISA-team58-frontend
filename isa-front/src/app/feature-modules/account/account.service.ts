@@ -59,7 +59,10 @@ export class AccountService {
   }
 
   editRegisteredUser(account: Account): Observable<void> {
-    return this.http.put<void>('http://localhost:5555/registeredUser/' + account.id, account);
+    return this.http.put<void>('http://localhost:5555/registeredUsers/' + account.id, account);
   }
   
+  getNonAdmins(): Observable<RegisteredUser[]> {
+    return this.http.get<RegisteredUser[]>('http://localhost:5555/registeredUsers/getNonAdmins');
+  }
 }
