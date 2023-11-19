@@ -27,5 +27,8 @@ export class CompanyService {
     const url = `${this.apiUrl}/${id}`;
     return this.http.put<Company>(url, company);
   }
-  
+
+  getAllCompanies(): Observable<Company[]> {
+    return this.http.get<Company[]>(this.apiUrl);
+  }
 }

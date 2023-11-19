@@ -1,0 +1,42 @@
+<!-- view-companies.component.html -->
+
+<div class="table-container">
+    <h2>Companies</h2>
+    <div class="search-container">
+        <input type="text" placeholder="Search..." class="search-bar" [(ngModel)]="searchTerm" />
+        <label for="lowerRating">Lower Rating:</label>
+        <input type="number" id="lowerRating" [(ngModel)]="lowerRating" max="5" min = "0"/>
+      
+        <label for="upperRating">Upper Rating:</label>
+        <input type="number" id="upperRating" [(ngModel)]="upperRating" max="5" min = "0"/>
+      
+        <button (click)="searchCompanies()">Search</button>
+      </div>
+      
+  
+    <table class="company-table">
+      <thead>
+        <tr>
+          <th>Company Name</th>
+          <th>Description</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>Certification</th>
+          <th>Rating</th>
+          <th>Phone Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let company of companies">
+          <td>{{ company.name }}</td>
+          <td>{{ company.description }}</td>
+          <td>{{ company.address }}</td>
+          <td>{{ company.city }}</td>
+          <td>{{ company.certification }}</td>
+          <td>{{ company.rating }}</td>
+          <td>{{ company.phoneNumber }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
