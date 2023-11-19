@@ -63,6 +63,10 @@ export class AccountService {
     return this.http.post<void>(`http://localhost:5555/registeredUsers`, user);
   }
 
+  updateRegisteredUser(user: RegisteredUser): Observable<void> {
+    return this.http.put<void>(`http://localhost:5555/registeredUsers/` + user.id, user);
+  }
+
   getAllAccounts(): Observable<Account[]> {
     return this.http.get<Account[]>(this.apiUrl);
   }

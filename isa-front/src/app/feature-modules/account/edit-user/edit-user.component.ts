@@ -46,8 +46,6 @@ export class EditUserComponent implements OnChanges, OnDestroy, OnInit {
     }
   }
   
-  
-
   ngOnInit(): void {
     this.accountService.getLoggedInAccount().subscribe(
       (account) => {
@@ -78,8 +76,8 @@ onSubmit() {
       workplaceId: this.loggedInAccount?.workplaceId ?? -1, 
       email: this.loggedInAccount?.email ?? "",
       password: this.loggedInAccount?.password ?? "",
-      isActive: this.loggedInAccount?.isActive ?? false,
-      isDeleted: this.loggedInAccount?.isDeleted ?? false,
+      isActive: true,
+      isDeleted: false,
       dtype: this.loggedInAccount?.dtype ?? "",
       firstName: this.editUserForm.value.firstName,
       lastName: this.editUserForm.value.lastName,
@@ -87,18 +85,17 @@ onSubmit() {
       country: this.editUserForm.value.country,
       phoneNumber: this.editUserForm.value.phoneNumber,
       job: this.editUserForm.value.job,
-      // Add other fields you want to update
     };
 
+    this.accountService.setLoggedInAccount(updatedUserData);
+
     // Update the user data in the service
-    this.accountService.saveRegisteredUser(updatedUserData).subscribe(
-      () => {
-        console.log('Account saved successfully!');
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this.accountService.updateRegisteredUser(updatedUserData).subscribe({
+        next: () => {
+          console.log('Account saved successfully!');
+          this.populateFormWithUserData();
+        }
+      });
   }
 }
 
