@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '../account.service';
 import { Router } from '@angular/router';
+import { Account } from 'src/app/shared/model/account.model';
 
 @Component({
   selector: 'app-login',
@@ -44,7 +45,6 @@ export class LoginComponent implements OnInit {
       this.service.login(email, password).subscribe(
         response => {
           console.log('Login successful:', response);
-          console.log(this.service.getLoggedInAccount());
           // Handle successful login, e.g., redirect to a new page
           this.router.navigate(['/']);
         },
