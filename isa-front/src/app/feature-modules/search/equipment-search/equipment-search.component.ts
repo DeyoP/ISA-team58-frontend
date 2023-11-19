@@ -12,6 +12,9 @@ export class EquipmentSearchComponent {
   equipment: Equipment[] = [];
   filteredEquipment: Equipment[] = [];
   nameSearch: string = '';
+  typeSearch: string = '';
+  minRating: number = 1;
+  maxRating: number = 5;
 
   constructor(private service: SearchService) {}
 
@@ -24,10 +27,12 @@ export class EquipmentSearchComponent {
       });
   }
 
-  onSearch(searchTerm: string): void {
+  onSearch(): void {
     this.filteredEquipment = this.equipment.filter((equipment) => {
-      const nameMatch = equipment.name.toLowerCase().includes(searchTerm.toLowerCase());
-      return nameMatch;
+      const nameMatch = equipment.name.toLowerCase().includes(this.nameSearch.toLowerCase());
+      const typeMatch = equipment.type.toLowerCase().includes(this.typeSearch.toLowerCase());
+      const ratingMatch = equipment.rating >= this.minRating && equipment.rating <= this.maxRating;
+      return nameMatch && typeMatch && ratingMatch;
     });
   }
 }
