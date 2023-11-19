@@ -1,0 +1,51 @@
+/* view-companies.component.css */
+
+  .company-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .company-table th, .company-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .company-table th {
+    background-color: lightblue;
+  }
+  
+  .company-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  /* view-companies.component.css */
+
+.table-container {
+    margin: 20px;
+  }
+  
+  h2 {
+    color: #333;
+  }
+  
+  .search-container {
+    position: relative;
+    margin-bottom: 10px;
+  }
+  
+  .search-bar {
+    padding: 5px 30px 5px 10px; /* Adjust the padding to ensure space for the icon */
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .fa-search {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #888;
+    cursor: pointer;
+  }
+  

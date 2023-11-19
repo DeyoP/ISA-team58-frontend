@@ -1,0 +1,30 @@
+<div class="company-admin-profile">
+    <h1>Company administrator</h1>
+    <p class="firstName">First name: {{ companyAdmin.firstName }}</p>
+    <p class="lastName">Last name: {{ companyAdmin.lastName }}</p>
+    <p class="city">City: {{ companyAdmin.city }}</p>
+    <p class="country">Country: {{ companyAdmin.country }}</p>
+    <ng-container *ngIf="companyAdmin.company">
+        <p class="company">Company: {{ companyAdmin.company.name }}</p>
+    </ng-container>
+    
+    <button (click)="onEditClicked()">Edit company administrator</button>
+    <div *ngIf="shouldRenderCompanyAdminForm">
+        <form [formGroup]="companyAdminForm" class="form-group">
+            <label for="firstName">First name:</label>
+            <input type="text" id="firstName" formControlName="firstName">
+    
+            <label for="lastName">Last name:</label>
+            <input type="text" id="lastName" formControlName="lastName">
+              
+            <label for="city">City:</label>
+            <input type="text" id="city" formControlName="city">
+            
+            <label for="country">Country:</label>
+            <input type="text" id="country" formControlName="country">
+
+            <button type="button" (click)="updateCompany()">Update</button>
+            <button type="button" (click)="cancelUpdate()">Cancel</button>
+        </form>
+    </div>
+</div>

@@ -6,6 +6,10 @@ import { RegisterComponent } from './feature-modules/account/register/register.c
 import { EditUserComponent } from './feature-modules/account/edit-user/edit-user.component';
 import { CompanyRegistrationComponent } from './feature-modules/system-administrator/company-registration/company-registration.component';
 import { CompanySearchComponent } from './feature-modules/search/company-search/company-search.component';
+import { EquipmentSearchComponent } from './feature-modules/search/equipment-search/equipment-search.component';
+import { CompanyOverviewComponent } from './feature-modules/company/company-overview/company-overview.component';
+import { ViewCompaniesComponent } from './feature-modules/company/view-companies/view-companies.component';
+import { CompanyAdministratorOverviewComponent } from './feature-modules/company-administrator/company-administrator-overview/company-administrator-overview.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -13,7 +17,12 @@ const routes: Routes = [
   { path: 'activate/:token', component: ActivationComponent },
   { path: 'editUser', component: EditUserComponent},
   { path: 'company-registration', component: CompanyRegistrationComponent },
-  { path: 'company-search', component: CompanySearchComponent}
+  { path: 'company-search', component: CompanySearchComponent },
+  { path: 'equipment-search', component: EquipmentSearchComponent },
+  { path: 'company/:id', component: CompanyOverviewComponent },
+  { path: 'view-companies', component: ViewCompaniesComponent },
+  { path: 'companies/:id', component: CompanyOverviewComponent },
+  { path: 'companyAdministrator/:id', component: CompanyAdministratorOverviewComponent}
 ];
 
 @NgModule({

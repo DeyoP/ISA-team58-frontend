@@ -16,6 +16,11 @@
   
     <label for="phoneNumber">Phone Number:</label>
     <input type="text" id="phoneNumber" formControlName="phoneNumber">
+
+    <label for="administratorId">Select Administrator:</label>
+    <select formControlName="administratorId" id="administratorId">
+      <option *ngFor="let admin of nonCompanyAdmins" [value]="admin.id">{{ admin.firstName }}</option>
+    </select>
   
     <button type="submit" [disabled]="companyForm.invalid">Submit</button>
   </form>
