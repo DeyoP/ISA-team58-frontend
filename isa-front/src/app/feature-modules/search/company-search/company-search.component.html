@@ -5,7 +5,13 @@
     <label for="citySearch">City:</label>
     <input type="text" id="citySearch" [(ngModel)]="citySearch" />
   
-    <button (click)="onSearch(nameSearch, citySearch)">Search</button>
+    <label for="minRating">Min Rating:</label>
+    <input type="number" id="minRating" [(ngModel)]="minRating" />
+  
+    <label for="maxRating">Max Rating:</label>
+    <input type="number" id="maxRating" [(ngModel)]="maxRating" />
+  
+    <button (click)="onSearch()">Search</button>
   </div>
   
   <table class="company-table">
@@ -13,12 +19,14 @@
       <tr>
         <th>Name</th>
         <th>City</th>
+        <th>Rating</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let company of filteredCompanies">
         <td>{{ company.name }}</td>
         <td>{{ company.city }}</td>
+        <td>{{ company.rating }}</td>
       </tr>
     </tbody>
   </table>
