@@ -75,7 +75,7 @@ onSubmit() {
       id: this.loggedInAccount?.id ?? -1,
       workplaceId: this.loggedInAccount?.workplaceId ?? -1, 
       email: this.loggedInAccount?.email ?? "",
-      password: this.loggedInAccount?.password ?? "",
+      password: this.editUserForm.value.password,
       isActive: true,
       isDeleted: false,
       dtype: this.loggedInAccount?.dtype ?? "",

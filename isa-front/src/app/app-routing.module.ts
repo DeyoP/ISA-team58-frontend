@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'activate/:token', component: ActivationComponent },
-  { path: 'editUser/:id', component: EditUserComponent},
+  { path: 'editUser', component: EditUserComponent},
   { path: 'company-registration', component: CompanyRegistrationComponent },
   { path: 'company-search', component: CompanySearchComponent}
 ];
