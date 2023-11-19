@@ -7,4 +7,5 @@ export interface Company {
     description: string;
     ceritification: string;
     phoneNumber: string;
+    rating: number;
 }

@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http'; // Updated import state
 import { AccountModule } from './feature-modules/account/account.module';
 import { CompanyRegistrationComponent } from './feature-modules/system-administrator/company-registration/company-registration.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { SearchModule } from './feature-modules/search/search.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     ReactiveFormsModule,
     HttpClientModule,
     AccountModule,
+    SearchModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
