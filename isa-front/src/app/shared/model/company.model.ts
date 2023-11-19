@@ -6,6 +6,7 @@ export interface Company {
     name: string;
     description: string;
     address: string;
+    city: string;
     rating: number;
     equipments: Equipment[]; 
     certification: string;

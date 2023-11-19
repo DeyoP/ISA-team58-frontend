@@ -1,4 +1,4 @@
-.company-profile {
+.company-admin-profile {
     background-color: #f8f9fa;
     padding: 20px;
     border: 1px solid #dee2e6;
@@ -10,22 +10,13 @@ h1 {
     color: #37a5b1;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    margin-bottom: 5px;
-}
-
-.description {
+.firstName {
     font-weight: bold;
     font-style: italic;
-    color: #6c757d;
+    color: #495057;
 }
 
-.address {
+.lastName {
     font-weight: bold;
     font-style: italic;
     color: #495057;
@@ -37,29 +28,18 @@ li {
     color: #495057;
 }
 
-.rating {
+.country {
     font-weight: bold;
     font-style: italic;
     color: #495057;
 }
 
-.equipment {
+.company {
     font-weight: bold;
     font-style: italic;
     color: #495057;
 }
 
-.certification {
-    font-weight: bold;
-    font-style: italic;
-    color: #495057;
-}
-
-.phoneNumber {
-    font-weight: bold;
-    font-style: italic;
-    color: #495057;
-}
 
 .form-group {
     margin-top: 20px;

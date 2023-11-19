@@ -23,6 +23,7 @@ export class CompanyOverviewComponent implements OnInit {
       name: ['', Validators.required],
       description: ['', Validators.required],
       address: ['', Validators.required],
+      city: ['', Validators.required],
       rating: ['', Validators.required],
       certification: ['', Validators.required],
       phoneNumber: ['', Validators.required]
@@ -66,6 +67,7 @@ export class CompanyOverviewComponent implements OnInit {
       name: this.company.name,
       description: this.company.description,
       address: this.company.address,
+      city: this.company.city,
       rating: this.company.rating,
       certification: this.company.certification,
       phoneNumber: this.company.phoneNumber

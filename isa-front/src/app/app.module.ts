@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http'; // Updated import state
 import { AccountModule } from './feature-modules/account/account.module';
 import { CompanyModule } from './feature-modules/company/company.module';
 import { EquipmentModule } from './feature-modules/equipment/equipment.module';
+import { CompanyAdministratorModule } from './feature-modules/company-administrator/company-administrator.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { EquipmentModule } from './feature-modules/equipment/equipment.module';
     HttpClientModule,
     AccountModule,
     CompanyModule,
-    EquipmentModule
+    EquipmentModule, 
+    CompanyAdministratorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

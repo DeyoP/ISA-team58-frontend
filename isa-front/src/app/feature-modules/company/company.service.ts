@@ -28,4 +28,9 @@ export class CompanyService {
     return this.http.put<Company>(url, company);
   }
   
+  getCompanyByAdmin(adminId: number): Observable<Company> {
+    const url = `${this.apiUrl}/by-admin/${adminId}`;
+    return this.http.get<Company>(url);
+  }
+
 }
