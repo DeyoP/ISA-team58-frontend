@@ -6,6 +6,8 @@ export interface Company {
     name: string;
     description: string;
     address: string;
-    averageRating: number;
+    rating: number;
     equipments: Equipment[]; 
+    certification: string;
+    phoneNumber: string;
 }

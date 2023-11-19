@@ -31,13 +31,25 @@ li {
     color: #495057;
 }
 
-.average-rating {
+.rating {
     font-weight: bold;
     font-style: italic;
     color: #495057;
 }
 
 .equipment {
+    font-weight: bold;
+    font-style: italic;
+    color: #495057;
+}
+
+.certification {
+    font-weight: bold;
+    font-style: italic;
+    color: #495057;
+}
+
+.phoneNumber {
     font-weight: bold;
     font-style: italic;
     color: #495057;
