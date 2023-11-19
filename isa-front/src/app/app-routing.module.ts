@@ -9,6 +9,7 @@ import { CompanySearchComponent } from './feature-modules/search/company-search/
 import { EquipmentSearchComponent } from './feature-modules/search/equipment-search/equipment-search.component';
 import { CompanyOverviewComponent } from './feature-modules/company/company-overview/company-overview.component';
 import { ViewCompaniesComponent } from './feature-modules/company/view-companies/view-companies.component';
+import { CompanyAdministratorOverviewComponent } from './feature-modules/company-administrator/company-administrator-overview/company-administrator-overview.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -20,6 +21,8 @@ const routes: Routes = [
   { path: 'equipment-search', component: EquipmentSearchComponent },
   { path: 'company/:id', component: CompanyOverviewComponent },
   { path: 'view-companies', component: ViewCompaniesComponent },
+  { path: 'companies/:id', component: CompanyOverviewComponent },
+  { path: 'companyAdministrator/:id', component: CompanyAdministratorOverviewComponent}
 ];
 
 @NgModule({

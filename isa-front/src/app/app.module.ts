@@ -12,6 +12,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { CompanyModule } from './feature-modules/company/company.module';
 import { EquipmentModule } from './feature-modules/equipment/equipment.module';
 import { SearchModule } from './feature-modules/search/search.module';
+import { CompanyAdministratorModule } from './feature-modules/company-administrator/company-administrator.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,8 @@ import { SearchModule } from './feature-modules/search/search.module';
     CompanyModule,
     EquipmentModule,
     SearchModule,
+    EquipmentModule, 
+    CompanyAdministratorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

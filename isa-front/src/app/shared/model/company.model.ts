@@ -8,8 +8,8 @@ export interface Company {
     description: string;
     address: string;
     city: string;
-    certification: string;
     rating: number;
-    phoneNumber: string;
     equipments: Equipment[]; 
+    certification: string;
+    phoneNumber: string;
 }

@@ -31,4 +31,10 @@ export class CompanyService {
   getAllCompanies(): Observable<Company[]> {
     return this.http.get<Company[]>(this.apiUrl);
   }
+  
+  getCompanyByAdmin(adminId: number): Observable<Company> {
+    const url = `${this.apiUrl}/by-admin/${adminId}`;
+    return this.http.get<Company>(url);
+  }
+
 }
