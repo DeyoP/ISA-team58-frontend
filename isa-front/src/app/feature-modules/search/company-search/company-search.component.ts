@@ -16,6 +16,8 @@ export class CompanySearchComponent implements OnInit {
 
   nameSearch: string = '';
   citySearch: string = '';
+  minRating: number = 1;
+  maxRating: number = 5;
   
   constructor(private service: SearchService) {}
 
@@ -23,8 +25,6 @@ export class CompanySearchComponent implements OnInit {
     this.service.getAllCompanies().subscribe({
       next: (result) => {
         this.companies = result;
-        console.log(this.companies);
-
         this.filteredCompanies = [...this.companies];
       }
       });
@@ -32,11 +32,21 @@ export class CompanySearchComponent implements OnInit {
     
   }
 
-  onSearch(searchTerm: string, searchCity: string): void {
-    this.filteredCompanies = this.companies.filter((company) => {
-      const nameMatch = company.name.toLowerCase().includes(searchTerm.toLowerCase());
-      const cityMatch = company.city.toLowerCase().includes(searchCity.toLowerCase());
-      return nameMatch && cityMatch;
-    });
+//   onSearch(searchTerm: string, searchCity: string): void {
+//     this.filteredCompanies = this.companies.filter((company) => {
+//       const nameMatch = company.name.toLowerCase().includes(searchTerm.toLowerCase());
+//       const cityMatch = company.city.toLowerCase().includes(searchCity.toLowerCase());
+//       const ratingMatch = company.rating >= this.minRating && company.rating <= this.maxRating;
+//       return nameMatch && cityMatch && ratingMatch;
+//     });
+// }
+
+onSearch(): void {
+  this.filteredCompanies = this.companies.filter((company) => {
+    const nameMatch = company.name.toLowerCase().includes(this.nameSearch.toLowerCase());
+    const cityMatch = company.city.toLowerCase().includes(this.citySearch.toLowerCase());
+    const ratingMatch = company.rating >= this.minRating && company.rating <= this.maxRating;
+    return nameMatch && cityMatch && ratingMatch;
+  });
 }
 }
