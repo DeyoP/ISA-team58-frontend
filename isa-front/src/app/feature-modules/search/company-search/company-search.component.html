@@ -20,6 +20,7 @@
         <th>Name</th>
         <th>City</th>
         <th>Rating</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -27,6 +28,9 @@
         <td>{{ company.name }}</td>
         <td>{{ company.city }}</td>
         <td>{{ company.rating }}</td>
+        <td>
+          <button [routerLink]="['/companies', company.id]">See More</button>
+        </td>
       </tr>
     </tbody>
   </table>
