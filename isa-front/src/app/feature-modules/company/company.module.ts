@@ -4,6 +4,7 @@ import { CompanyOverviewComponent } from './company-overview/company-overview.co
 import { ReactiveFormsModule } from '@angular/forms';
 import { ViewCompaniesComponent } from './view-companies/view-companies.component';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    RouterModule
   ],
   exports: [
     CompanyOverviewComponent

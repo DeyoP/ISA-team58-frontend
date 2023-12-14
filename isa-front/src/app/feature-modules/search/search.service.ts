@@ -23,6 +23,6 @@ export class SearchService {
   }
   
   getAllEquipment(): Observable<Equipment[]> {
-    return this.http.get<Equipment[]>('http://localhost:5555/equipment/getAll');
+    return this.http.get<Equipment[]>('http://localhost:5555/equipments/getAll');
   }
 }

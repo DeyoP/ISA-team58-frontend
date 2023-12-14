@@ -82,6 +82,7 @@ button {
     padding: 10px;
     margin-right: 10px;
     cursor: pointer;
+    margin: 10px;
 }
 
 button.cancel {

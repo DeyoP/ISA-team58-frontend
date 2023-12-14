@@ -10,6 +10,7 @@ import { EquipmentSearchComponent } from './feature-modules/search/equipment-sea
 import { CompanyOverviewComponent } from './feature-modules/company/company-overview/company-overview.component';
 import { ViewCompaniesComponent } from './feature-modules/company/view-companies/view-companies.component';
 import { CompanyAdministratorOverviewComponent } from './feature-modules/company-administrator/company-administrator-overview/company-administrator-overview.component';
+import { EquipmentOverviewComponent } from './feature-modules/equipment/equipment-overview/equipment-overview.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'company/:id', component: CompanyOverviewComponent },
   { path: 'view-companies', component: ViewCompaniesComponent },
   { path: 'companies/:id', component: CompanyOverviewComponent },
-  { path: 'companyAdministrator/:id', component: CompanyAdministratorOverviewComponent}
+  { path: 'companyAdministrator/:id', component: CompanyAdministratorOverviewComponent},
+  { path: 'company/:id/equipments', component: EquipmentOverviewComponent}
 ];
 
 @NgModule({

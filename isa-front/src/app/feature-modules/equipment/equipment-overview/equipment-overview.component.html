@@ -1,0 +1,80 @@
+<div class="company-equipments">
+    <h1>Company Equipments</h1>
+    <div class="search-container">
+        <label for="nameSearch">Name:</label>
+        <input type="text" id="nameSearch" [(ngModel)]="nameSearch" />
+    
+        <label for="typeSearch">Type:</label>
+        <input type="text" id="typeSearch" [(ngModel)]="typeSearch" />
+      
+        <button (click)="onSearch()">Search</button>
+    </div>
+
+    <button (click)="onAddClicked()" class="add-button">Add equipment</button>
+
+    <table class="equipment-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Rating</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let equipment of filteredEquipment">
+                <td class="name">{{ equipment.name }}</td>
+                <td class="description">{{ equipment.description }}</td>
+                <td class="type">{{ equipment.type }}</td>
+                <td class="rating">{{ equipment.rating }}</td>
+                <td class="actions">
+                    <button (click)="onEditClicked(equipment)" class="update-button">Update</button>
+                </td>
+                <td class="actions">
+                    <button (click)="onDeleteClick(equipment)" class="delete-button">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+      
+    <div *ngIf="shouldRenderAddForm">
+        <form [formGroup]="addForm" class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" formControlName="name">
+
+            <label for="description">Description:</label>
+            <textarea id="description" formControlName="description"></textarea>
+
+            <label for="type">Type:</label>
+            <input type="text" id="type" formControlName="type">
+
+            <label for="rating">Rating:</label>
+            <input type="text" id="rating" formControlName="rating">
+
+            <button type="button" (click)="addEquipment()">Add</button>
+            <button type="button" (click)="cancelAdd()">Cancel</button>
+        </form>
+    </div>
+
+    <div *ngIf="shouldRenderUpdateForm">
+        <form [formGroup]="updateForm" class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" formControlName="name">
+
+            <label for="description">Description:</label>
+            <input type="text" id="description" formControlName="description">
+
+            <label for="type">Type:</label>
+            <input type="text" id="type" formControlName="type">
+
+            <label for="rating">Average rating:</label>
+            <input type="number" id="rating" formControlName="rating">
+
+            <button type="button" (click)="updateEquipment()">Update</button>
+            <button type="button" (click)="cancelUpdate()">Cancel</button>
+        </form>
+    </div>
+
+</div>
