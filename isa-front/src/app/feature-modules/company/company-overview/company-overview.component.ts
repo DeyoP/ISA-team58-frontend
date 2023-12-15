@@ -4,6 +4,8 @@ import { CompanyService } from '../company.service';
 import { ActivatedRoute } from '@angular/router';
 import { Equipment } from 'src/app/shared/model/equipment.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TimeSlotsModalComponent } from '../time-slots-modal/time-slots-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-company-overview',
@@ -17,8 +19,11 @@ export class CompanyOverviewComponent implements OnInit {
   shouldRenderCompanyForm = false;
   shouldEdit = false;
   companyForm: FormGroup;
-  
-  constructor(private companyService: CompanyService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
+  reservedEquipments: Equipment[] = [];
+  showTimeSlotsButtonVisible = false;
+
+
+  constructor(private companyService: CompanyService, private route: ActivatedRoute, private formBuilder: FormBuilder, private dialog: MatDialog) {
     this.companyForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
@@ -95,5 +100,29 @@ export class CompanyOverviewComponent implements OnInit {
   cancelUpdate() {
     this.shouldEdit = false;
     this.shouldRenderCompanyForm = false;
+  }
+
+  reserveEquipment(equipment: Equipment) {
+    // Check if the equipment is not already reserved
+    if (!this.reservedEquipments.includes(equipment)) {
+      // Add the equipment to the reserved list
+      this.reservedEquipments.push(equipment);
+    }
+  }
+
+  removeReservedEquipment(reservedEquipment: Equipment) {
+    // Remove the equipment from the reserved list
+    this.reservedEquipments = this.reservedEquipments.filter(e => e !== reservedEquipment);
+  }
+
+  openTimeSlotsModal() {
+    const dialogRef = this.dialog.open(TimeSlotsModalComponent, {
+      data: { reservedEquipments: this.reservedEquipments }
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // Handle any logic after the modal is closed
+    });
   }
 }

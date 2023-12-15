@@ -8,8 +8,10 @@
     <ul>
         <li *ngFor="let equipment of equipments">
             <span class="equipment-name">{{ equipment.name }}</span>
+            <button (click)="reserveEquipment(equipment)">Reserve</button>
         </li>
     </ul>
+
 
     <p class="rating">Average rating: {{ company.rating }}</p>
     <p class="certification">Certification: {{ company.certification }}</p>
@@ -43,4 +45,17 @@
             <button type="button" (click)="cancelUpdate()">Cancel</button>
         </form>
     </div>
+
+        <!-- Reserved Equipment Section -->
+        <div class="reserved-equipment">
+            <h2>Reserved Equipment</h2>
+            <ul>
+                <li *ngFor="let reservedEquipment of reservedEquipments">
+                    {{ reservedEquipment.name }}
+                    <button (click)="removeReservedEquipment(reservedEquipment)">Remove</button>
+                </li>
+            </ul>
+            <button *ngIf="reservedEquipments.length > 0" (click)="openTimeSlotsModal()">Show Available Time Slots</button>
+
+        </div>
 </div>

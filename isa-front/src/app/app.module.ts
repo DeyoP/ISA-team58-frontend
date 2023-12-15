@@ -13,6 +13,7 @@ import { CompanyModule } from './feature-modules/company/company.module';
 import { EquipmentModule } from './feature-modules/equipment/equipment.module';
 import { SearchModule } from './feature-modules/search/search.module';
 import { CompanyAdministratorModule } from './feature-modules/company-administrator/company-administrator.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { CompanyAdministratorModule } from './feature-modules/company-administra
     EquipmentModule,
     SearchModule,
     EquipmentModule, 
-    CompanyAdministratorModule
+    CompanyAdministratorModule, BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

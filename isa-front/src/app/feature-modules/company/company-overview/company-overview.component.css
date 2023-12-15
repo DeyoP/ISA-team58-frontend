@@ -1,3 +1,4 @@
+/* Existing styles for company profile */
 .company-profile {
     background-color: #f8f9fa;
     padding: 20px;
@@ -19,43 +20,7 @@ li {
     margin-bottom: 5px;
 }
 
-.description {
-    font-weight: bold;
-    font-style: italic;
-    color: #6c757d;
-}
-
-.address {
-    font-weight: bold;
-    font-style: italic;
-    color: #495057;
-}
-
-.city {
-    font-weight: bold;
-    font-style: italic;
-    color: #495057;
-}
-
-.rating {
-    font-weight: bold;
-    font-style: italic;
-    color: #495057;
-}
-
-.equipment {
-    font-weight: bold;
-    font-style: italic;
-    color: #495057;
-}
-
-.certification {
-    font-weight: bold;
-    font-style: italic;
-    color: #495057;
-}
-
-.phoneNumber {
+.description, .address, .city, .rating, .equipment, .certification, .phoneNumber {
     font-weight: bold;
     font-style: italic;
     color: #495057;
@@ -76,6 +41,7 @@ input {
     margin-bottom: 10px;
 }
 
+/* Styles for buttons */
 button {
     background-color: #37a5b1;
     color: white;
@@ -86,4 +52,41 @@ button {
 
 button.cancel {
     background-color: #808080;
+}
+
+/* New styles for equipment and reserved equipment sections */
+.equipment {
+    margin-top: 20px;
+}
+
+.equipment-name {
+    font-weight: bold;
+    color: #495057;
+}
+
+button.reserve {
+    background-color: #28a745;
+}
+
+.reserved-equipment {
+    margin-top: 20px;
+}
+
+.reserved-equipment h2 {
+    color: #37a5b1;
+}
+
+.reserved-equipment ul {
+    padding: 0;
+}
+
+.reserved-equipment li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.reserved-equipment li button {
+    background-color: #dc3545;
+    margin-left: 10px;
 }
