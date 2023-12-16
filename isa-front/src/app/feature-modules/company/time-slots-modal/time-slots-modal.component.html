@@ -1,17 +1,4 @@
-<div>
-    <mat-form-field>
-      <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="selectedDate" (ngModelChange)="updateAvailableTimes()">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-  </div>
-  
-  <div *ngIf="availableTimes.length > 0">
-    <mat-button-toggle-group name="times" [(ngModel)]="selectedTime">
-      <mat-button-toggle *ngFor="let time of availableTimes" [value]="time">{{ time }}</mat-button-toggle>
-    </mat-button-toggle-group>
-  </div>
-  
+
+  Hello
   <button mat-button (click)="closeModal()">Close</button>
-  <button mat-button (click)="confirmSelection()">Confirm</button>
   
