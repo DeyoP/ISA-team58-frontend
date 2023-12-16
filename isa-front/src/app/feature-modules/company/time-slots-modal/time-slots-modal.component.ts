@@ -15,6 +15,7 @@ export class TimeSlotsModalComponent {
   filteredAppointments: EquipmentAppointment[] | undefined;
   selectedStartTime: Date | undefined;
   selectedEndTime: Date | undefined;
+
   constructor(
     public dialogRef: MatDialogRef<TimeSlotsModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -47,6 +48,9 @@ export class TimeSlotsModalComponent {
     if (this.selectedDate && this.equipmentAppointments) {
       console.log('Selected Date:', this.selectedDate);
       console.log('Equipment Appointments:', this.equipmentAppointments);
+
+      
+      
   
       this.filteredAppointments = this.equipmentAppointments
         .filter(appointment => {
@@ -64,7 +68,38 @@ export class TimeSlotsModalComponent {
       console.log('Filtered Appointments:', this.filteredAppointments);
     }
   }
+
+  buttonClick(){
+    if (this.selectedDate)
+      console.log(this.isAppointmentExtraordinary(this.selectedDate));
+  }
   
+  private isAppointmentExtraordinary(date: Date): boolean {
+    if (this.equipmentAppointments) {
+      for (let appointment of this.equipmentAppointments) {
+        console.log("Entered the loop");
+  
+        const modifiedDate = new Date(date);
+        const appointmentStartTime = new Date(appointment.startTime);
+        const appointmentEndTime = new Date(appointment.endTime);
+  
+        console.log(modifiedDate);
+        console.log(appointment.startTime);
+        console.log(appointmentStartTime);
+  
+        // Convert to UTC if needed
+        const dateUTC = appointmentStartTime.toUTCString();
+        const appointmentStartTimeUTC = appointmentStartTime.toUTCString();
+        const appointmentEndTimeUTC = appointmentEndTime.toUTCString();
+  
+        if (dateUTC >= appointmentStartTimeUTC && dateUTC <= appointmentEndTimeUTC) {
+          console.log("Entered the if statement");
+          return true;
+        }
+      }
+    }
+    return false;
+  }
   
   
   private getStartOfDay(date: Date): Date {
