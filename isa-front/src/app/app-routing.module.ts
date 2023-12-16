@@ -10,6 +10,7 @@ import { EquipmentSearchComponent } from './feature-modules/search/equipment-sea
 import { CompanyOverviewComponent } from './feature-modules/company/company-overview/company-overview.component';
 import { ViewCompaniesComponent } from './feature-modules/company/view-companies/view-companies.component';
 import { CompanyAdministratorOverviewComponent } from './feature-modules/company-administrator/company-administrator-overview/company-administrator-overview.component';
+import { AdministratorRegistrationComponent } from './feature-modules/system-administrator/administrator-registration/administrator-registration.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'activate/:token', component: ActivationComponent },
   { path: 'editUser', component: EditUserComponent},
   { path: 'company-registration', component: CompanyRegistrationComponent },
+  { path: 'administrator-registration', component: AdministratorRegistrationComponent },
   { path: 'company-search', component: CompanySearchComponent },
   { path: 'equipment-search', component: EquipmentSearchComponent },
   { path: 'company/:id', component: CompanyOverviewComponent },

@@ -13,11 +13,11 @@ import { CompanyModule } from './feature-modules/company/company.module';
 import { EquipmentModule } from './feature-modules/equipment/equipment.module';
 import { SearchModule } from './feature-modules/search/search.module';
 import { CompanyAdministratorModule } from './feature-modules/company-administrator/company-administrator.module';
+import { SystemAdministratorModule } from './feature-modules/system-administrator/system-administrator.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CompanyRegistrationComponent,
     NavbarComponent
   ],
   imports: [
@@ -31,7 +31,8 @@ import { CompanyAdministratorModule } from './feature-modules/company-administra
     EquipmentModule,
     SearchModule,
     EquipmentModule, 
-    CompanyAdministratorModule
+    CompanyAdministratorModule,
+    SystemAdministratorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
