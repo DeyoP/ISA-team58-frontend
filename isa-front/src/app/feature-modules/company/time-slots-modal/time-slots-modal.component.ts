@@ -82,12 +82,7 @@ export class TimeSlotsModalComponent {
         const modifiedDate = new Date(date);
         const appointmentStartTime = new Date(appointment.startTime);
         const appointmentEndTime = new Date(appointment.endTime);
-  
-        console.log(modifiedDate);
-        console.log(appointment.startTime);
-        console.log(appointmentStartTime);
-  
-        // Convert to UTC if needed
+        
         const dateUTC = appointmentStartTime.toUTCString();
         const appointmentStartTimeUTC = appointmentStartTime.toUTCString();
         const appointmentEndTimeUTC = appointmentEndTime.toUTCString();

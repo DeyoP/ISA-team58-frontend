@@ -5,8 +5,16 @@
     <p class="city">City: {{ company.city }}</p>
 
     <p class="equipment">Equipment</p>
+
+    <div class="search-container">
+        <!-- <label for="nameSearch">Search:</label> -->
+        <input type="text" id="search" [(ngModel)]="search" placeholder="Search equipment..."/>
+        <button (click)="onSearch()">Search</button>
+    </div>
+    
+
     <ul>
-        <li *ngFor="let equipment of equipments">
+        <li *ngFor="let equipment of filteredEquipments">
             <span class="equipment-name">{{ equipment.name }}</span>
             <button (click)="reserveEquipment(equipment)">Reserve</button>
         </li>

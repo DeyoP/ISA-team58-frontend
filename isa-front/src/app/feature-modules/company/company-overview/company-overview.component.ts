@@ -21,6 +21,8 @@ export class CompanyOverviewComponent implements OnInit {
   companyForm: FormGroup;
   reservedEquipments: Equipment[] = [];
   showTimeSlotsButtonVisible = false;
+  filteredEquipments: Equipment[] = []; 
+  search: string = '';
 
 
   constructor(private companyService: CompanyService, private route: ActivatedRoute, private formBuilder: FormBuilder, private dialog: MatDialog) {
@@ -60,6 +62,7 @@ export class CompanyOverviewComponent implements OnInit {
     this.companyService.getCompanyEquipments(companyId).subscribe({
         next: (equipmentList: Equipment[]) => {
             this.equipments = equipmentList;
+            this.filteredEquipments = [...this.equipments];
         }
     });
   }
@@ -96,6 +99,13 @@ export class CompanyOverviewComponent implements OnInit {
       );
     }
   }
+
+  onSearch(): void {
+    this.filteredEquipments = this.equipments.filter((equipment) => {
+        return equipment.name.toLowerCase().includes(this.search.toLowerCase());
+    });
+}
+
   
   cancelUpdate() {
     this.shouldEdit = false;
