@@ -20,4 +20,8 @@ export class SystemAdministratorService {
   saveSystemAdministrator(systemAdministrator: SystemAdministrator): Observable<void> {
     return this.http.post<void>('http://localhost:5555/systemAdministrators', systemAdministrator);
   }
+
+  updateSystemAdministrator(systemAdministrator: SystemAdministrator): Observable<void> {
+    return this.http.put<void>('http://localhost:5555/systemAdministrators', systemAdministrator);
+  }
 }

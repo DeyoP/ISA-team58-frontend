@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '../account.service';
 import { Router } from '@angular/router';
 import { Account } from 'src/app/shared/model/account.model';
+import { SystemAdministrator } from 'src/app/shared/model/system-administrator.module';
 
 @Component({
   selector: 'app-login',
@@ -45,8 +46,23 @@ export class LoginComponent implements OnInit {
       this.service.login(email, password).subscribe(
         response => {
           console.log('Login successful:', response);
-          // Handle successful login, e.g., redirect to a new page
-          this.router.navigate(['/']);
+
+          this.service.getLoggedInAccount().subscribe(account => {
+            if (account) {
+              if ('firstLogin' in account) {
+                const registeredUser = account as SystemAdministrator;
+                if (registeredUser.firstLogin) {
+                  this.router.navigate(['/change-password']);
+                } else {
+                  this.router.navigate(['/']);
+                }
+              } else {
+                this.router.navigate(['/']);
+              }
+            } else {
+              this.router.navigate(['/']);
+            }
+          })
         },
         error => {
           console.error('Login failed:', error);

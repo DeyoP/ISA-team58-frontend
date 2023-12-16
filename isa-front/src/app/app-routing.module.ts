@@ -11,6 +11,7 @@ import { CompanyOverviewComponent } from './feature-modules/company/company-over
 import { ViewCompaniesComponent } from './feature-modules/company/view-companies/view-companies.component';
 import { CompanyAdministratorOverviewComponent } from './feature-modules/company-administrator/company-administrator-overview/company-administrator-overview.component';
 import { AdministratorRegistrationComponent } from './feature-modules/system-administrator/administrator-registration/administrator-registration.component';
+import { ChangePasswordComponent } from './feature-modules/account/change-password/change-password.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'company/:id', component: CompanyOverviewComponent },
   { path: 'view-companies', component: ViewCompaniesComponent },
   { path: 'companies/:id', component: CompanyOverviewComponent },
-  { path: 'companyAdministrator/:id', component: CompanyAdministratorOverviewComponent}
+  { path: 'companyAdministrator/:id', component: CompanyAdministratorOverviewComponent },
+  { path: 'change-password', component: ChangePasswordComponent },
 ];
 
 @NgModule({
