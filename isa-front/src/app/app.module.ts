@@ -14,6 +14,8 @@ import { EquipmentModule } from './feature-modules/equipment/equipment.module';
 import { SearchModule } from './feature-modules/search/search.module';
 import { CompanyAdministratorModule } from './feature-modules/company-administrator/company-administrator.module';
 import { SystemAdministratorModule } from './feature-modules/system-administrator/system-administrator.module';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { SystemAdministratorModule } from './feature-modules/system-administrato
     SearchModule,
     EquipmentModule, 
     CompanyAdministratorModule,
-    SystemAdministratorModule
+    SystemAdministratorModule,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
   providers: [],
   bootstrap: [AppComponent]
