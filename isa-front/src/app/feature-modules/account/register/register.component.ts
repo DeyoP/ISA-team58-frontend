@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegisteredUser } from 'src/app/shared/model/registered-user.model';
+import { AuthenticationService } from '../../auth/auth.service';
 import { AccountService } from '../account.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class RegisterComponent implements OnInit {
   formSteps = ['personalInfo', 'locationInfo', 'contactWorkInfo', 'passwordInfo', 'emailInfo'];
   
 
-  constructor(private fb: FormBuilder, private service: AccountService) {
+  constructor(private fb: FormBuilder, private service: AccountService, private authService: AuthenticationService) {
     this.registrationForm = this.fb.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
@@ -123,7 +124,7 @@ export class RegisterComponent implements OnInit {
         dtype: "registered_user",
       };
 
-      this.service.saveRegisteredUser(formData).subscribe(
+      this.authService.signup(formData).subscribe(
         () => {
           console.log('Account saved successfully!');
         },
