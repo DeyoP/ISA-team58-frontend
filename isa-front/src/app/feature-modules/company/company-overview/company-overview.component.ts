@@ -69,9 +69,11 @@ export class CompanyOverviewComponent implements OnInit {
     }
   }
 
-  private isTaken(): boolean {
-    
-    return false;
+  isAdvailable(availableTimeSlot: any): boolean {
+    for (const reservedEquipment of this.reservedEquipments) {
+      return true;
+    }
+    return true;
   }
   
   private getCompanyDetails(id: number): void {

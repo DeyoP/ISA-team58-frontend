@@ -50,15 +50,11 @@
                 <td>{{ availableTimeSlot.date }}</td>
                 <td>{{ availableTimeSlot.time }}</td>
                 <td>{{ availableTimeSlot.duration }}</td>
-                <td><button (click)="makeAppointment(availableTimeSlot)">Reserve</button></td>
-                <td><button (click)="makeAppointment(availableTimeSlot)">Reserve</button></td>
+                <td><button (click)="makeAppointment(availableTimeSlot)">Reserve regularly</button></td>
+                <td><button (click)="makeAppointment(availableTimeSlot)">Reserve extraordinarily</button></td>
             </tr>
         </tbody>
-    </table>
-
-
-
-    
+    </table>   
     
     <button (click)="onEditClicked()">Edit company</button>
     <div *ngIf="shouldRenderCompanyForm">
