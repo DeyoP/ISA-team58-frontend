@@ -3,6 +3,6 @@ export interface EquipmentAppointment {
     equipmentId: number;
     userId: number;
     availableTimeSlotId: number;
-    isExtraordinary: boolean;
+    extraordinary: boolean;
   }
   

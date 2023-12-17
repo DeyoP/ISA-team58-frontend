@@ -17,7 +17,15 @@ export class EquipmentAppointmentService {
     return this.http.get<EquipmentAppointment[]>(`${this.apiUrl}/getByEquipment`, { params });
   }
 
-  create(appointment: EquipmentAppointment): Observable<EquipmentAppointment> {
+  create(appointment: EquipmentAppointment): Observable<EquipmentAppointment> {console.log(appointment.extraordinary);
     return this.http.post<EquipmentAppointment>(`${this.apiUrl}`, appointment);
+  }
+
+  createExtraordinary(appointment: EquipmentAppointment): Observable<EquipmentAppointment> {console.log(appointment.extraordinary);
+    return this.http.post<EquipmentAppointment>(`${this.apiUrl}/extraordinary`, appointment);
+  }
+  
+  getAll(): Observable<EquipmentAppointment[]> {
+    return this.http.get<EquipmentAppointment[]>(`${this.apiUrl}/getAll`);
   }
 }

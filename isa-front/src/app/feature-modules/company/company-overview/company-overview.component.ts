@@ -26,6 +26,7 @@ export class CompanyOverviewComponent implements OnInit {
   showTimeSlotsButtonVisible = false;
   filteredEquipments: Equipment[] = []; 
   search: string = '';
+  allAppointments: EquipmentAppointment[] = [];
 
   constructor(private companyService: CompanyService, private equipmentAppointmentService: EquipmentAppointmentService, private route: ActivatedRoute, private formBuilder: FormBuilder, private dialog: MatDialog) {
     this.companyForm = this.formBuilder.group({
@@ -49,6 +50,12 @@ export class CompanyOverviewComponent implements OnInit {
         this.getCompanyDetails(this.companyId);
       }
     });
+
+    this.equipmentAppointmentService.getAll().subscribe({
+      next: (result) => {
+        this.allAppointments = result;
+      }
+    })
   }
 
   makeAppointment(avaibleTimeSlot: AvailableTimeSlots): void {
@@ -58,7 +65,7 @@ export class CompanyOverviewComponent implements OnInit {
         equipmentId: reservedEquipment.id,
         userId: 1,
         availableTimeSlotId: avaibleTimeSlot.id,
-        isExtraordinary: false
+        extraordinary: false
       }
 
       this.equipmentAppointmentService.create(appointment).subscribe({
@@ -69,10 +76,45 @@ export class CompanyOverviewComponent implements OnInit {
     }
   }
 
+  makeExtraordinaryAppointment(avaibleTimeSlot: AvailableTimeSlots): void {
+    for (const reservedEquipment of this.reservedEquipments) {
+      const appointment : EquipmentAppointment = {
+        id : 0,
+        equipmentId: reservedEquipment.id,
+        userId: 1,
+        availableTimeSlotId: avaibleTimeSlot.id,
+        extraordinary: true
+      }
+
+      this.equipmentAppointmentService.createExtraordinary(appointment).subscribe({
+        next: () => {
+          console.log("DEYAN PELEMISHSHHSHS")
+        }
+      });
+    }
+  }
+
   isAdvailable(availableTimeSlot: any): boolean {
     for (const reservedEquipment of this.reservedEquipments) {
-      return true;
+      for (const appointment of this.allAppointments) {
+        if (appointment.availableTimeSlotId === availableTimeSlot.id && reservedEquipment.id === appointment.equipmentId) {
+          return false;
+        }
+      }
     }
+
+    return true;
+  }
+
+  isExtroardinarliyAdvailable(availableTimeSlot: any): boolean {
+    for (const reservedEquipment of this.reservedEquipments) {
+      for (const appointment of this.allAppointments) {
+        if (appointment.availableTimeSlotId === availableTimeSlot.id && reservedEquipment.id === appointment.equipmentId && appointment.extraordinary) {
+          return false;
+        }
+      }
+    }
+
     return true;
   }
   
