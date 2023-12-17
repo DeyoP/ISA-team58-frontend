@@ -13,6 +13,7 @@ import { EquipmentModule } from './feature-modules/equipment/equipment.module';
 import { SearchModule } from './feature-modules/search/search.module';
 import { CompanyAdministratorModule } from './feature-modules/company-administrator/company-administrator.module';
 import { SystemAdministratorModule } from './feature-modules/system-administrator/system-administrator.module';
+import { AvailableTimeSlotsModule } from './feature-modules/available-time-slots/available-time-slots.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SystemAdministratorModule } from './feature-modules/system-administrato
     SearchModule,
     EquipmentModule, 
     CompanyAdministratorModule,
-    SystemAdministratorModule
+    SystemAdministratorModule,
+    AvailableTimeSlotsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

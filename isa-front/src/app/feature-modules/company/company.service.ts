@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AvailableTimeSlots } from 'src/app/shared/model/available-time-slots.model';
 import { Company } from 'src/app/shared/model/company.model';
 import { Equipment } from 'src/app/shared/model/equipment.model';
 
@@ -37,4 +38,8 @@ export class CompanyService {
     return this.http.get<Company>(url);
   }
 
+  getCompanyAvailableTimeSlots(companyId: number): Observable<AvailableTimeSlots[]> {
+    const url = `${this.apiUrl}/${companyId}/availableTimeSlots`;
+    return this.http.get<AvailableTimeSlots[]>(url);
+  }
 }

@@ -11,6 +11,7 @@ import { CompanyOverviewComponent } from './feature-modules/company/company-over
 import { ViewCompaniesComponent } from './feature-modules/company/view-companies/view-companies.component';
 import { CompanyAdministratorOverviewComponent } from './feature-modules/company-administrator/company-administrator-overview/company-administrator-overview.component';
 import { EquipmentOverviewComponent } from './feature-modules/equipment/equipment-overview/equipment-overview.component';
+import { AvailableTimeSlotsOverviewComponent } from './feature-modules/available-time-slots/available-time-slots-overview/available-time-slots-overview.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'view-companies', component: ViewCompaniesComponent },
   { path: 'companies/:id', component: CompanyOverviewComponent },
   { path: 'companyAdministrator/:id', component: CompanyAdministratorOverviewComponent},
-  { path: 'company/:id/equipments', component: EquipmentOverviewComponent}
+  { path: 'company/:id/equipments', component: EquipmentOverviewComponent},
+  { path: 'availableTimeSlots', component: AvailableTimeSlotsOverviewComponent}
 ];
 
 @NgModule({

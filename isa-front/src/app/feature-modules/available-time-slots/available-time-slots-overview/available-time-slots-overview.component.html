@@ -1,0 +1,51 @@
+<div class="available-time-slots">
+    <h1>Available Time Slots</h1>
+    <button (click)="onAddClicked()" class="add-button">Add available time slot</button>
+
+    <table class="equipment-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Duration</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let availableTimeSlot of availableTimeSlots">
+                <td class="name">{{ availableTimeSlot.date }}</td>
+                <td class="description">{{ availableTimeSlot.duration }}</td>
+                <td class="type">{{ availableTimeSlot.time }}</td>
+            </tr>
+        </tbody>
+    </table>
+      
+    <div *ngIf="shouldRenderAddForm">
+        <form [formGroup]="addForm" class="form-group">
+            <label for="date">Date:</label>
+            <input type="date" id="date" formControlName="date">
+
+            <label for="time">Time:</label>
+            <input type="time" id="time" formControlName="time">
+
+            <label for="duration">Duration:</label>
+            <textarea id="duration" formControlName="duration"></textarea>
+
+            <label for="administrator">Administrator:</label>
+            <input type="text" id="administrator" formControlName="administrator">
+
+            <label for="company">Company:</label>
+            <select formControlName="company" (change)="onCompanySelected()">
+                <option *ngFor="let company of companies" [value]="company.id">{{ company.name }}</option>
+            </select>
+
+            <label for="equipment">Equipment:</label>
+            <select formControlName="equipment">
+               <option *ngFor="let equipment of equipments" [value]="equipment.id">{{ equipment.name }}</option>
+            </select>
+
+            <button type="button" (click)="addEquipment()">Add</button>
+            <button type="button" (click)="cancelAdd()">Cancel</button>
+        </form>
+    </div>
+
+</div>
