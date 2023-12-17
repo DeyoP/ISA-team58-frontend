@@ -41,7 +41,8 @@
                 <th>Date</th>
                 <th>Time</th>
                 <th>Duration</th>
-                <th>Action</th>
+                <th>Regular Reservation</th>
+                <th>Extraordinary Reservation</th>
             </tr>
         </thead>
         <tbody>
@@ -49,6 +50,7 @@
                 <td>{{ availableTimeSlot.date }}</td>
                 <td>{{ availableTimeSlot.time }}</td>
                 <td>{{ availableTimeSlot.duration }}</td>
+                <td><button (click)="makeAppointment(availableTimeSlot)">Reserve</button></td>
                 <td><button (click)="makeAppointment(availableTimeSlot)">Reserve</button></td>
             </tr>
         </tbody>

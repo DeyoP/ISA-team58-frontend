@@ -40,6 +40,17 @@ export class CompanyOverviewComponent implements OnInit {
 
   }
 
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      this.companyId = id ? parseInt(id, 10) : null;
+  
+      if (this.companyId !== null) {
+        this.getCompanyDetails(this.companyId);
+      }
+    });
+  }
+
   makeAppointment(avaibleTimeSlot: AvailableTimeSlots): void {
     for (const reservedEquipment of this.reservedEquipments) {
       const appointment : EquipmentAppointment = {
@@ -52,26 +63,15 @@ export class CompanyOverviewComponent implements OnInit {
 
       this.equipmentAppointmentService.create(appointment).subscribe({
         next: () => {
-  
           console.log("DEYAN PELEMISHSHHSHS")
         }
-  
       });
     }
-
-    
-    
   }
 
-  ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      const id = params.get('id');
-      this.companyId = id ? parseInt(id, 10) : null;
-  
-      if (this.companyId !== null) {
-        this.getCompanyDetails(this.companyId);
-      }
-    });
+  private isTaken(): boolean {
+    
+    return false;
   }
   
   private getCompanyDetails(id: number): void {
