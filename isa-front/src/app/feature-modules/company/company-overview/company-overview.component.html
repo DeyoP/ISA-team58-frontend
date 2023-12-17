@@ -3,8 +3,13 @@
     <p class="description">{{ company.description }}</p>
     <p class="address">Address: {{ company.address }}</p>
     <p class="city">City: {{ company.city }}</p>
+    <p class="rating">Average rating: {{ company.rating }}</p>
+    <p class="certification">Certification: {{ company.certification }}</p>
+    <p class="phoneNumber">Phone number: {{ company.phoneNumber }}</p>
 
-    <p class="equipment">Equipment</p>
+
+    
+    <h3 class="equipment">Equipment</h3>
 
     <div class="search-container">
         <!-- <label for="nameSearch">Search:</label> -->
@@ -19,18 +24,30 @@
             <button (click)="reserveEquipment(equipment)">Reserve</button>
         </li>
     </ul>
-    <p class="availableTimeSlots">Available time slots for equipment pickup</p>
-    <ul>
-        <li *ngFor="let availableTimeSlot of availableTimeSlots">
-            <span class="date">{{ availableTimeSlot.date }}</span>
-            <span>{{ availableTimeSlot.time }}</span>
-        </li>
-    </ul>
+
+    <h3 class="availableTimeSlots">Available time slots for equipment pickup</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Duration</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let availableTimeSlot of availableTimeSlots">
+                <td>{{ availableTimeSlot.date }}</td>
+                <td>{{ availableTimeSlot.time }}</td>
+                <td>{{ availableTimeSlot.duration }}</td>
+                <td><button>Click me</button></td>
+            </tr>
+        </tbody>
+    </table>
 
 
-    <p class="rating">Average rating: {{ company.rating }}</p>
-    <p class="certification">Certification: {{ company.certification }}</p>
-    <p class="phoneNumber">Phone number: {{ company.phoneNumber }}</p>
+
+    
     
     <button (click)="onEditClicked()">Edit company</button>
     <div *ngIf="shouldRenderCompanyForm">

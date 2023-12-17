@@ -126,3 +126,32 @@ button.reserve {
     padding: 5px 10px; /* Add padding for a cleaner look */
     margin-left: 5px; /* Add some left margin for spacing between input and button */
 }
+
+table {
+    width: 70%; /* Set the desired width */
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+thead {
+    background-color: #f2f2f2;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #37a5b1;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+

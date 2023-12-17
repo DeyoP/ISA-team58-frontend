@@ -32,15 +32,6 @@ export class CompanySearchComponent implements OnInit {
     
   }
 
-//   onSearch(searchTerm: string, searchCity: string): void {
-//     this.filteredCompanies = this.companies.filter((company) => {
-//       const nameMatch = company.name.toLowerCase().includes(searchTerm.toLowerCase());
-//       const cityMatch = company.city.toLowerCase().includes(searchCity.toLowerCase());
-//       const ratingMatch = company.rating >= this.minRating && company.rating <= this.maxRating;
-//       return nameMatch && cityMatch && ratingMatch;
-//     });
-// }
-
 onSearch(): void {
   this.filteredCompanies = this.companies.filter((company) => {
     const nameMatch = company.name.toLowerCase().includes(this.nameSearch.toLowerCase());
