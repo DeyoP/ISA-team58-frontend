@@ -21,4 +21,9 @@ export class CompanyAdministratorService {
     const url = `${this.apiUrl}/${id}`;
     return this.http.put<CompanyAdministrator>(url, companyAdministrator);
   }
+
+  changePassword(id: number, companyAdministrator: CompanyAdministrator): Observable<CompanyAdministrator> {
+    const url = `${this.apiUrl}/${id}/changePassword`;
+    return this.http.put<CompanyAdministrator>(url, companyAdministrator);
+  }
 }

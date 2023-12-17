@@ -88,3 +88,13 @@ button {
 button.cancel {
     background-color: #808080;
 }
+
+.availableTimeSlots {
+    font-weight: bold;
+    font-style: italic;
+    color: #495057;
+}
+
+.date {
+    margin-right: 10px;
+}

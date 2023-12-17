@@ -4,6 +4,7 @@ import { CompanyService } from '../company.service';
 import { ActivatedRoute } from '@angular/router';
 import { Equipment } from 'src/app/shared/model/equipment.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AvailableTimeSlots } from 'src/app/shared/model/available-time-slots.model';
 
 @Component({
   selector: 'app-company-overview',
@@ -17,6 +18,7 @@ export class CompanyOverviewComponent implements OnInit {
   shouldRenderCompanyForm = false;
   shouldEdit = false;
   companyForm: FormGroup;
+  availableTimeSlots: AvailableTimeSlots[] = [];
   
   constructor(private companyService: CompanyService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
     this.companyForm = this.formBuilder.group({
@@ -46,6 +48,7 @@ export class CompanyOverviewComponent implements OnInit {
       next: (result: Company) => {
         this.company = result;
         this.loadCompanyEquipments(this.companyId!);
+        this.loadCompanyAvailableTimeSlots(this.companyId!);
       },
       error: () => {}
     });
@@ -96,4 +99,13 @@ export class CompanyOverviewComponent implements OnInit {
     this.shouldEdit = false;
     this.shouldRenderCompanyForm = false;
   }
+
+  loadCompanyAvailableTimeSlots(companyId: number): void {
+    this.companyService.getCompanyAvailableTimeSlots(companyId).subscribe({
+        next: (availableTimeSlotsList: AvailableTimeSlots[]) => {
+            this.availableTimeSlots = availableTimeSlotsList;
+        }
+    });
+  }
+
 }

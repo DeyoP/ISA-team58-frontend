@@ -10,6 +10,13 @@
             <span class="equipment-name">{{ equipment.name }}</span>
         </li>
     </ul>
+    <p class="availableTimeSlots">Available time slots for equipment pickup</p>
+    <ul>
+        <li *ngFor="let availableTimeSlot of availableTimeSlots">
+            <span class="date">{{ availableTimeSlot.date }}</span>
+            <span>{{ availableTimeSlot.time }}</span>
+        </li>
+    </ul>
 
     <p class="rating">Average rating: {{ company.rating }}</p>
     <p class="certification">Certification: {{ company.certification }}</p>

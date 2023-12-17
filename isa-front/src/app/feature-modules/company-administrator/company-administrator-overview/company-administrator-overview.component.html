@@ -27,4 +27,17 @@
             <button type="button" (click)="cancelUpdate()">Cancel</button>
         </form>
     </div>
+    <button (click)="onChangePasswordClicked()">Change password</button>
+    <div *ngIf="shouldRenderChangePasswordForm">
+        <form [formGroup]="changePasswordForm" class="form-group">
+            <label for="oldPassword">Your password:</label>
+            <input type="password" id="oldPassword" formControlName="oldPassword">
+
+            <label for="newPassword">Your new password:</label>
+            <input type="password" id="newPassword" formControlName="newPassword">
+
+            <button type="button" (click)="changePassword()">Change</button>
+            <button type="button" (click)="cancelChange()">Cancel</button>
+        </form>
+    </div>
 </div>

@@ -17,6 +17,10 @@ export class CompanyAdministratorOverviewComponent {
   shouldRenderCompanyAdminForm = false;
   shouldEdit = false;
   companyAdminForm: FormGroup;
+
+  shouldRenderChangePasswordForm = false;
+  shouldChange = false;
+  changePasswordForm: FormGroup;
   
   constructor(private companyAdminService: CompanyAdministratorService, private route: ActivatedRoute, private formBuilder: FormBuilder, private companyService: CompanyService) {
     this.companyAdminForm = this.formBuilder.group({
@@ -25,7 +29,12 @@ export class CompanyAdministratorOverviewComponent {
       city: ['', Validators.required],
       country: ['', Validators.required],
       company: ['', Validators.required]
-  });
+    });
+
+    this. changePasswordForm = this.formBuilder.group({
+      oldPassword: [this.companyAdmin.password || '', Validators.required],
+      newPassword: ['', [Validators.required, Validators.minLength(6)]]
+    });
   }
 
   ngOnInit(): void {
@@ -50,12 +59,15 @@ export class CompanyAdministratorOverviewComponent {
   }
 
   loadCompany(adminId: number): void {
-    this.companyService.getCompanyByAdmin(adminId).subscribe({
+    if (this.companyAdmin && this.companyAdmin.company) {
+      this.companyService.getCompanyByAdmin(adminId).subscribe({
         next: (company: Company) => {
-            this.companyAdmin.company.name = company.name;
+          this.companyAdmin.company.name = company?.name || '';
         }
-    });
+      });
+    }
   }
+  
 
   onEditClicked() {
     this.shouldEdit = true;
@@ -89,6 +101,50 @@ export class CompanyAdministratorOverviewComponent {
   }
   
   cancelUpdate() {
+    this.shouldEdit = false;
+    this.shouldRenderCompanyAdminForm = false;
+  }
+
+  onChangePasswordClicked() {
+    this.shouldChange = true;
+    this.shouldRenderChangePasswordForm = true;
+
+    this.changePasswordForm.patchValue({
+      oldPassword: this.companyAdmin.password,
+    });
+  }
+  
+  changePassword() {
+    if (this.changePasswordForm.valid) {
+      const oldPassword = this.changePasswordForm.get('oldPassword')?.value;
+      const newPassword = this.changePasswordForm.get('newPassword')?.value;
+  
+      // Dodajte proveru da li stara lozinka odgovara trenutnoj lozinci korisnika
+      if (oldPassword !== this.companyAdmin.password) {
+        console.error('Old password does not match current password');
+        // Dodajte odgovarajući korisnički interfejs ili poruku o grešci
+        return;
+      }
+  
+      // Ako stara lozinka odgovara, izvršite ažuriranje lozinke
+      const updatedCompanyAdmin: CompanyAdministrator = { ...this.companyAdmin, password: newPassword };
+  
+      this.companyAdminService.changePassword(this.companyAdmin.id, updatedCompanyAdmin).subscribe(
+        () => {
+          this.companyAdmin = updatedCompanyAdmin;
+          this.shouldRenderChangePasswordForm = false;
+          this.shouldChange = false;
+          console.log('Company administrator updated successfully');
+        },
+        error => {
+          console.error('Error updating company administrator:', error);
+          // Dodajte odgovarajući korisnički interfejs ili poruku o grešci
+        }
+      );
+    }
+  }
+  
+  cancelChange() {
     this.shouldEdit = false;
     this.shouldRenderCompanyAdminForm = false;
   }
