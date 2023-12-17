@@ -37,4 +37,8 @@ export class CompanyService {
     return this.http.get<Company>(url);
   }
 
+  saveCompany(company: Company): Observable<Company> {
+    return this.http.post<Company>(this.apiUrl, company);
+  }
+
 }

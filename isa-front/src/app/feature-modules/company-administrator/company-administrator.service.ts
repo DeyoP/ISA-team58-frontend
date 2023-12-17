@@ -21,4 +21,8 @@ export class CompanyAdministratorService {
     const url = `${this.apiUrl}/${id}`;
     return this.http.put<CompanyAdministrator>(url, companyAdministrator);
   }
+  
+  saveCompanyAdministrator(companyAdministrator: CompanyAdministrator): Observable<CompanyAdministrator> {
+    return this.http.post<CompanyAdministrator>('http://localhost:5555/companyAdministrator', companyAdministrator);
+  }
 }

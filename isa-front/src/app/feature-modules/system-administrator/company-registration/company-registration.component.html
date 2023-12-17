@@ -17,10 +17,23 @@
     <label for="phoneNumber">Phone Number:</label>
     <input type="text" id="phoneNumber" formControlName="phoneNumber">
 
-    <label for="administratorId">Select Administrator:</label>
-    <select formControlName="administratorId" id="administratorId">
-      <option *ngFor="let admin of nonCompanyAdmins" [value]="admin.id">{{ admin.firstName }}</option>
-    </select>
+    <label for="email">Email:</label>
+    <input type="text" id="email" formControlName="email">
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" formControlName="password">
+
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" formControlName="firstName">
+    
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" formControlName="lastName">
+    
+    <label for="cityAdmin">City:</label>
+    <input type="text" id="cityAdmin" formControlName="cityAdmin">
+    
+    <label for="country">Country:</label>
+    <input type="text" id="country" formControlName="country">
   
     <button type="submit" [disabled]="companyForm.invalid">Submit</button>
   </form>
