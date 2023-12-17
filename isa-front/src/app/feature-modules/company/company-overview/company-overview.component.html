@@ -24,7 +24,16 @@
             <button (click)="reserveEquipment(equipment)">Reserve</button>
         </li>
     </ul>
-
+        <!-- Reserved Equipment Section -->
+        <div class="reserved-equipment">
+            <h2>Reserved Equipment</h2>
+            <ul>
+                <li *ngFor="let reservedEquipment of reservedEquipments">
+                    {{ reservedEquipment.name }}
+                    <button (click)="removeReservedEquipment(reservedEquipment)">Remove</button>
+                </li>
+            </ul>
+        </div>
     <h3 class="availableTimeSlots">Available time slots for equipment pickup</h3>
     <table>
         <thead>
@@ -40,7 +49,7 @@
                 <td>{{ availableTimeSlot.date }}</td>
                 <td>{{ availableTimeSlot.time }}</td>
                 <td>{{ availableTimeSlot.duration }}</td>
-                <td><button>Click me</button></td>
+                <td><button (click)="addEquipmentToTimeSlot(availableTimeSlot)">Reserve</button></td>
             </tr>
         </tbody>
     </table>
@@ -80,16 +89,5 @@
 
     <button [routerLink]="['/company', company.id, 'equipments']">View more about equipments</button>
 
-        <!-- Reserved Equipment Section -->
-        <div class="reserved-equipment">
-            <h2>Reserved Equipment</h2>
-            <ul>
-                <li *ngFor="let reservedEquipment of reservedEquipments">
-                    {{ reservedEquipment.name }}
-                    <button (click)="removeReservedEquipment(reservedEquipment)">Remove</button>
-                </li>
-            </ul>
-            <button *ngIf="reservedEquipments.length > 0" (click)="openTimeSlotsModal()">Show Available Time Slots</button>
 
-        </div>
 </div>
