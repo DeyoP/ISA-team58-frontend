@@ -12,10 +12,11 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { CompanyModule } from './feature-modules/company/company.module';
 import { EquipmentModule } from './feature-modules/equipment/equipment.module';
 import { SearchModule } from './feature-modules/search/search.module';
-import { CompanyAdministratorModule } from './feature-modules/company-administrator/company-administrator.module';
 import { SystemAdministratorModule } from './feature-modules/system-administrator/system-administrator.module';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { CompanyAdministratorModule } from './feature-modules/company-administrator/company-administrator.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     EquipmentModule, 
     CompanyAdministratorModule,
     SystemAdministratorModule,
-    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+    FullCalendarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

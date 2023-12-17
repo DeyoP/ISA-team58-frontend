@@ -13,6 +13,7 @@ import { CompanyAdministratorOverviewComponent } from './feature-modules/company
 import { AdministratorRegistrationComponent } from './feature-modules/system-administrator/administrator-registration/administrator-registration.component';
 import { ChangePasswordComponent } from './feature-modules/account/change-password/change-password.component';
 import { ComplaintsComponent } from './feature-modules/system-administrator/complaints/complaints.component';
+import { CalendarComponent } from './feature-modules/company-administrator/calendar/calendar.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'companyAdministrator/:id', component: CompanyAdministratorOverviewComponent },
   { path: 'change-password', component: ChangePasswordComponent },
   { path: 'complaints', component: ComplaintsComponent },
+  { path: 'calendar', component: CalendarComponent },
 ];
 
 @NgModule({
