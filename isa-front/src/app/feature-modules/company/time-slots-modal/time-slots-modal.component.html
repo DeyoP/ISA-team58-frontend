@@ -1,0 +1,46 @@
+<!-- Date selection input -->
+<div>
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="selectedDate" (ngModelChange)="loadEquipmentAppointmentsByDate()">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+
+<div *ngIf="selectedDate && (!filteredAppointments || filteredAppointments.length === 0)">
+  No reservations made on this day!
+</div>
+<div *ngIf="filteredAppointments && filteredAppointments.length > 0">
+  <label>Reservations made that include this day: </label>
+  <table class="mat-elevation-z8">
+    <thead>
+      <tr>
+        <th>Equipment ID</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Extraordinary</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let appointment of filteredAppointments">
+        <td>{{ appointment.equipmentId }}</td>
+
+        <td>{{ appointment.startTime | date: 'short' }}</td>
+        <td>{{ appointment.endTime | date: 'short' }}</td>
+        <td>{{ appointment.isExtraordinary ? 'Yes' : 'No' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="selectedDate">
+<mat-form-field>
+  <label>Start time: </label>
+  <input matInput type="time" placeholder="Choose a time" [(ngModel)]="selectedStartTime">
+</mat-form-field>
+<mat-form-field>
+  <label>End time: </label>
+  <input matInput type="time" placeholder="Choose a time" [(ngModel)]="selectedEndTime">
+</mat-form-field>
+<button (click)="buttonClick()">Check</button>
+</div>
+<!-- Rest of your HTML content -->

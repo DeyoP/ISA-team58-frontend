@@ -6,17 +6,31 @@ import { ViewCompaniesComponent } from './view-companies/view-companies.componen
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { TimeSlotsModalComponent } from './time-slots-modal/time-slots-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
     CompanyOverviewComponent,
-    ViewCompaniesComponent
+    ViewCompaniesComponent,
+    TimeSlotsModalComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatButtonToggleModule,
+    MatTableModule,
   ],
   exports: [
     CompanyOverviewComponent

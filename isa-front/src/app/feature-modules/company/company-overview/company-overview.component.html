@@ -5,9 +5,18 @@
     <p class="city">City: {{ company.city }}</p>
 
     <p class="equipment">Equipment</p>
+
+    <div class="search-container">
+        <!-- <label for="nameSearch">Search:</label> -->
+        <input type="text" id="search" [(ngModel)]="search" placeholder="Search equipment..."/>
+        <button (click)="onSearch()">Search</button>
+    </div>
+    
+
     <ul>
-        <li *ngFor="let equipment of equipments">
+        <li *ngFor="let equipment of filteredEquipments">
             <span class="equipment-name">{{ equipment.name }}</span>
+            <button (click)="reserveEquipment(equipment)">Reserve</button>
         </li>
     </ul>
     <p class="availableTimeSlots">Available time slots for equipment pickup</p>
@@ -17,6 +26,7 @@
             <span>{{ availableTimeSlot.time }}</span>
         </li>
     </ul>
+
 
     <p class="rating">Average rating: {{ company.rating }}</p>
     <p class="certification">Certification: {{ company.certification }}</p>
@@ -53,4 +63,16 @@
 
     <button [routerLink]="['/company', company.id, 'equipments']">View more about equipments</button>
 
+        <!-- Reserved Equipment Section -->
+        <div class="reserved-equipment">
+            <h2>Reserved Equipment</h2>
+            <ul>
+                <li *ngFor="let reservedEquipment of reservedEquipments">
+                    {{ reservedEquipment.name }}
+                    <button (click)="removeReservedEquipment(reservedEquipment)">Remove</button>
+                </li>
+            </ul>
+            <button *ngIf="reservedEquipments.length > 0" (click)="openTimeSlotsModal()">Show Available Time Slots</button>
+
+        </div>
 </div>

@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Equipment } from 'src/app/shared/model/equipment.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AvailableTimeSlots } from 'src/app/shared/model/available-time-slots.model';
+import { TimeSlotsModalComponent } from '../time-slots-modal/time-slots-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-company-overview',
@@ -19,8 +21,12 @@ export class CompanyOverviewComponent implements OnInit {
   shouldEdit = false;
   companyForm: FormGroup;
   availableTimeSlots: AvailableTimeSlots[] = [];
-  
-  constructor(private companyService: CompanyService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
+  reservedEquipments: Equipment[] = [];
+  showTimeSlotsButtonVisible = false;
+  filteredEquipments: Equipment[] = []; 
+  search: string = '';
+
+  constructor(private companyService: CompanyService, private route: ActivatedRoute, private formBuilder: FormBuilder, private dialog: MatDialog) {
     this.companyForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
@@ -30,6 +36,7 @@ export class CompanyOverviewComponent implements OnInit {
       certification: ['', Validators.required],
       phoneNumber: ['', Validators.required]
   });
+
   }
 
   ngOnInit(): void {
@@ -58,6 +65,7 @@ export class CompanyOverviewComponent implements OnInit {
     this.companyService.getCompanyEquipments(companyId).subscribe({
         next: (equipmentList: Equipment[]) => {
             this.equipments = equipmentList;
+            this.filteredEquipments = [...this.equipments];
         }
     });
   }
@@ -94,6 +102,13 @@ export class CompanyOverviewComponent implements OnInit {
       );
     }
   }
+
+  onSearch(): void {
+    this.filteredEquipments = this.equipments.filter((equipment) => {
+        return equipment.name.toLowerCase().includes(this.search.toLowerCase());
+    });
+}
+
   
   cancelUpdate() {
     this.shouldEdit = false;
@@ -108,4 +123,27 @@ export class CompanyOverviewComponent implements OnInit {
     });
   }
 
+  reserveEquipment(equipment: Equipment) {
+    // Check if the equipment is not already reserved
+    if (!this.reservedEquipments.includes(equipment)) {
+      // Add the equipment to the reserved list
+      this.reservedEquipments.push(equipment);
+    }
+  }
+
+  removeReservedEquipment(reservedEquipment: Equipment) {
+    // Remove the equipment from the reserved list
+    this.reservedEquipments = this.reservedEquipments.filter(e => e !== reservedEquipment);
+  }
+
+  openTimeSlotsModal() {
+    const dialogRef = this.dialog.open(TimeSlotsModalComponent, {
+      data: { reservedEquipments: this.reservedEquipments }
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // Handle any logic after the modal is closed
+    });
+  }
 }

@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { AccountService } from '../account.service';
 import { map } from 'rxjs/operators';
 import { Observable, Subscription } from 'rxjs';
+import { AuthenticationService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -19,7 +20,7 @@ export class EditUserComponent implements OnChanges, OnDestroy, OnInit {
   submitted = false;
   private subscription!: Subscription; 
 
-  constructor(private fb: FormBuilder, private accountService: AccountService) {
+  constructor(private fb: FormBuilder, private accountService: AccountService, private authService: AuthenticationService) {
     this.editUserForm = this.fb.group({
       firstName: [''],
       lastName: [''],
@@ -47,14 +48,12 @@ export class EditUserComponent implements OnChanges, OnDestroy, OnInit {
   }
   
   ngOnInit(): void {
-    this.accountService.getLoggedInAccount().subscribe(
-      (account) => {
-        this.loggedInAccount = account as RegisteredUser;
+
         this.populateFormWithUserData();
- 
-      }
-    );
+  
+
   }
+  
 
   ngOnChanges(): void {
     // Handle ngOnChanges logic if needed
@@ -87,7 +86,7 @@ onSubmit() {
       job: this.editUserForm.value.job,
     };
 
-    this.accountService.setLoggedInAccount(updatedUserData);
+    this.authService.setCurrentUser(updatedUserData);
 
     // Update the user data in the service
     this.accountService.updateRegisteredUser(updatedUserData).subscribe({
