@@ -6,7 +6,6 @@ import { ViewCompaniesComponent } from './view-companies/view-companies.componen
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { TimeSlotsModalComponent } from './time-slots-modal/time-slots-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -18,7 +17,6 @@ import { MatTableModule } from '@angular/material/table';
   declarations: [
     CompanyOverviewComponent,
     ViewCompaniesComponent,
-    TimeSlotsModalComponent
   ],
   imports: [
     CommonModule,

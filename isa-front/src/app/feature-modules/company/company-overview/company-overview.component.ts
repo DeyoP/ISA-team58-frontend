@@ -5,8 +5,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Equipment } from 'src/app/shared/model/equipment.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AvailableTimeSlots } from 'src/app/shared/model/available-time-slots.model';
-import { TimeSlotsModalComponent } from '../time-slots-modal/time-slots-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { EquipmentAppointmentService } from '../equipment-appointment.service';
+import { EquipmentAppointment } from 'src/app/shared/model/equipmentAppointment.model';
 
 @Component({
   selector: 'app-company-overview',
@@ -26,7 +27,7 @@ export class CompanyOverviewComponent implements OnInit {
   filteredEquipments: Equipment[] = []; 
   search: string = '';
 
-  constructor(private companyService: CompanyService, private route: ActivatedRoute, private formBuilder: FormBuilder, private dialog: MatDialog) {
+  constructor(private companyService: CompanyService, private equipmentAppointmentService: EquipmentAppointmentService, private route: ActivatedRoute, private formBuilder: FormBuilder, private dialog: MatDialog) {
     this.companyForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
@@ -37,6 +38,29 @@ export class CompanyOverviewComponent implements OnInit {
       phoneNumber: ['', Validators.required]
   });
 
+  }
+
+  makeAppointment(avaibleTimeSlot: AvailableTimeSlots): void {
+    for (const reservedEquipment of this.reservedEquipments) {
+      const appointment : EquipmentAppointment = {
+        id : 0,
+        equipmentId: reservedEquipment.id,
+        userId: 1,
+        availableTimeSlotId: avaibleTimeSlot.id,
+        isExtraordinary: false
+      }
+
+      this.equipmentAppointmentService.create(appointment).subscribe({
+        next: () => {
+  
+          console.log("DEYAN PELEMISHSHHSHS")
+        }
+  
+      });
+    }
+
+    
+    
   }
 
   ngOnInit(): void {
@@ -135,15 +159,6 @@ export class CompanyOverviewComponent implements OnInit {
     // Remove the equipment from the reserved list
     this.reservedEquipments = this.reservedEquipments.filter(e => e !== reservedEquipment);
   }
-
-  openTimeSlotsModal() {
-    const dialogRef = this.dialog.open(TimeSlotsModalComponent, {
-      data: { reservedEquipments: this.reservedEquipments }
-    });
   
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      // Handle any logic after the modal is closed
-    });
-  }
+    
 }
