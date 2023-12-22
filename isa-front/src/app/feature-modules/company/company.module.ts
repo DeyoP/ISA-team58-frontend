@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTableModule } from '@angular/material/table';
+import { CompanyAdministratorModule } from '../company-administrator/company-administrator.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MatTableModule } from '@angular/material/table';
     MatDatepickerModule,
     MatButtonToggleModule,
     MatTableModule,
+    CompanyAdministratorModule,
   ],
   exports: [
     CompanyOverviewComponent

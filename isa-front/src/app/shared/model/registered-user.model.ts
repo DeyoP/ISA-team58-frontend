@@ -9,3 +9,4 @@ export interface RegisteredUser extends Account{
     job: string;
     workplaceId: number;
 }
+

@@ -28,4 +28,8 @@ export class EquipmentAppointmentService {
   getAll(): Observable<EquipmentAppointment[]> {
     return this.http.get<EquipmentAppointment[]>(`${this.apiUrl}/getAll`);
   }
+
+  getByCompanyId(companyId: number): Observable<EquipmentAppointment[]> {
+    return this.http.get<EquipmentAppointment[]>(`${this.apiUrl}/getByCompany/${companyId}`);
+  }
 }

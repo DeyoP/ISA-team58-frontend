@@ -5,4 +5,5 @@ export interface Account {
     isActive: boolean;
     isDeleted: boolean;
     dtype: String;
+    roles: any[];
 }

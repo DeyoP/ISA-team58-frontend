@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivationComponent } from './activation/activation.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 
@@ -13,7 +14,8 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     LoginComponent,
     RegisterComponent,
     ActivationComponent,
-    EditUserComponent
+    EditUserComponent,
+    ChangePasswordComponent
   ],
   imports: [
     CommonModule,

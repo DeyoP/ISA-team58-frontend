@@ -21,6 +21,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 
 @NgModule({
@@ -49,6 +50,8 @@ import { MatTableModule } from '@angular/material/table';
     MatNativeDateModule,
     MatFormFieldModule,
     MatTableModule,
+    FullCalendarModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

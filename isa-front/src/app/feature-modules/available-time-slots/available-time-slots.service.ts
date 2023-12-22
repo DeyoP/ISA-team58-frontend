@@ -21,5 +21,9 @@ export class AvailableTimeSlotsService {
     const url = `${this.apiUrl}/add?companyId=${companyId}&administratorId=${administratorId}&equipmentId=${equipmentId}`;
     return this.http.post<AvailableTimeSlots>(url, availableTimeSlot);  
   }
-
+  
+  getAvailableTimeSlotById(id: number): Observable<AvailableTimeSlots> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get<AvailableTimeSlots>(url);
+  }
 }

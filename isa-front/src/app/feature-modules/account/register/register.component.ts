@@ -122,8 +122,8 @@ export class RegisterComponent implements OnInit {
         isActive:false,
         isDeleted:false,
         dtype: "registered_user",
+        roles: [],
       };
-
       this.authService.signup(formData).subscribe(
         () => {
           console.log('Account saved successfully!');

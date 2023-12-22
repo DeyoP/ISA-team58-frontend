@@ -8,6 +8,7 @@ import { AvailableTimeSlots } from 'src/app/shared/model/available-time-slots.mo
 import { MatDialog } from '@angular/material/dialog';
 import { EquipmentAppointmentService } from '../equipment-appointment.service';
 import { EquipmentAppointment } from 'src/app/shared/model/equipmentAppointment.model';
+import { AuthenticationService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-company-overview',
@@ -27,8 +28,9 @@ export class CompanyOverviewComponent implements OnInit {
   filteredEquipments: Equipment[] = []; 
   search: string = '';
   allAppointments: EquipmentAppointment[] = [];
+  shouldRenderCalendar: boolean = false;
 
-  constructor(private companyService: CompanyService, private equipmentAppointmentService: EquipmentAppointmentService, private route: ActivatedRoute, private formBuilder: FormBuilder, private dialog: MatDialog) {
+  constructor(private companyService: CompanyService, private equipmentAppointmentService: EquipmentAppointmentService, private route: ActivatedRoute, private formBuilder: FormBuilder, private authService: AuthenticationService) {
     this.companyForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
@@ -63,9 +65,10 @@ export class CompanyOverviewComponent implements OnInit {
       const appointment : EquipmentAppointment = {
         id : 0,
         equipmentId: reservedEquipment.id,
-        userId: 1,
+        userId: this.authService.currentUserValue?.id || 0,
         availableTimeSlotId: avaibleTimeSlot.id,
-        extraordinary: false
+        extraordinary: false,
+        companyId : this.company.id,
       }
 
       this.equipmentAppointmentService.create(appointment).subscribe({
@@ -81,9 +84,10 @@ export class CompanyOverviewComponent implements OnInit {
       const appointment : EquipmentAppointment = {
         id : 0,
         equipmentId: reservedEquipment.id,
-        userId: 1,
+        userId: this.authService.currentUserValue?.id || 0,
         availableTimeSlotId: avaibleTimeSlot.id,
-        extraordinary: true
+        extraordinary: true,
+        companyId: this.company.id,
       }
 
       this.equipmentAppointmentService.createExtraordinary(appointment).subscribe({
@@ -124,6 +128,7 @@ export class CompanyOverviewComponent implements OnInit {
         this.company = result;
         this.loadCompanyEquipments(this.companyId!);
         this.loadCompanyAvailableTimeSlots(this.companyId!);
+        this.shouldRenderCalendar = true;
       },
       error: () => {}
     });

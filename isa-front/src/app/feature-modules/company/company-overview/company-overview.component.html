@@ -86,6 +86,6 @@
     </div>
 
     <button [routerLink]="['/company', company.id, 'equipments']">View more about equipments</button>
-
+    <app-calendar *ngIf="shouldRenderCalendar" [company]="company"></app-calendar>
 
 </div>

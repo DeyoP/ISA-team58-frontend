@@ -4,5 +4,6 @@ export interface EquipmentAppointment {
     userId: number;
     availableTimeSlotId: number;
     extraordinary: boolean;
+    companyId: number;
   }
   

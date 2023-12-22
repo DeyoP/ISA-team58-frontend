@@ -31,4 +31,9 @@ export class EquipmentService {
     return this.http.delete<void>(url);
   }
 
+  getEquipmentById(id: number): Observable<Equipment> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get<Equipment>(url);
+  }
+
 }

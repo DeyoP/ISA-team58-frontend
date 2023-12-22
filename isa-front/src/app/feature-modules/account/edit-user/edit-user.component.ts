@@ -14,7 +14,7 @@ import { AuthenticationService } from '../../auth/auth.service';
 })
 export class EditUserComponent implements OnChanges, OnDestroy, OnInit {
 
-  loggedInAccount: RegisteredUser | null = null;
+  loggedInAccount: any | null = null;
   editUserForm: FormGroup;
 
   submitted = false;
@@ -28,7 +28,6 @@ export class EditUserComponent implements OnChanges, OnDestroy, OnInit {
       country: [''],
       phoneNumber: [''],
       job: [''],
-      password: [''],
     });
   }
   
@@ -42,15 +41,15 @@ export class EditUserComponent implements OnChanges, OnDestroy, OnInit {
         country: this.loggedInAccount.country,
         phoneNumber: this.loggedInAccount.phoneNumber,
         job: this.loggedInAccount.job,
-        password: this.loggedInAccount.password // Assuming you don't want to display the password
       });
     }
   }
   
   ngOnInit(): void {
 
-        this.populateFormWithUserData();
-  
+    this.loggedInAccount =  this.authService.currentUserValue
+    console.log(this.loggedInAccount)
+    this.populateFormWithUserData();
 
   }
   
@@ -74,7 +73,7 @@ onSubmit() {
       id: this.loggedInAccount?.id ?? -1,
       workplaceId: this.loggedInAccount?.workplaceId ?? -1, 
       email: this.loggedInAccount?.email ?? "",
-      password: this.editUserForm.value.password,
+      password: this.loggedInAccount.password,
       isActive: true,
       isDeleted: false,
       dtype: this.loggedInAccount?.dtype ?? "",
@@ -84,8 +83,8 @@ onSubmit() {
       country: this.editUserForm.value.country,
       phoneNumber: this.editUserForm.value.phoneNumber,
       job: this.editUserForm.value.job,
+      roles: this.loggedInAccount?.roles,
     };
-
     this.authService.setCurrentUser(updatedUserData);
 
     // Update the user data in the service

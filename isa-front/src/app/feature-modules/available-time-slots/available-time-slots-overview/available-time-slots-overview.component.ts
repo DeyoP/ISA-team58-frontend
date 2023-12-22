@@ -6,6 +6,7 @@ import { Company } from 'src/app/shared/model/company.model';
 import { Equipment } from 'src/app/shared/model/equipment.model';
 import { CompanyService } from '../../company/company.service';
 import { CompanyAdministratorService } from '../../company-administrator/company-administrator.service';
+import { AuthenticationService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-available-time-slots-overview',
@@ -26,7 +27,7 @@ export class AvailableTimeSlotsOverviewComponent implements OnInit{
   shouldRenderAddForm = false;
   shouldAdd = false;
   
-  constructor(private service: AvailableTimeSlotsService, private companyService: CompanyService, private formBuilder: FormBuilder) {
+  constructor(private service: AvailableTimeSlotsService, private companyService: CompanyService, private formBuilder: FormBuilder, private authService: AuthenticationService) {
     this.addForm = this.formBuilder.group({
       duration: ['', Validators.required],
       date: ['', Validators.required],
@@ -40,6 +41,7 @@ export class AvailableTimeSlotsOverviewComponent implements OnInit{
   ngOnInit(): void {
     this.getAvailableTimeSlots();
     this.loadCompanies();
+    console.log(this.authService.currentUserValue)
   }
   
   getAvailableTimeSlots(): void {
