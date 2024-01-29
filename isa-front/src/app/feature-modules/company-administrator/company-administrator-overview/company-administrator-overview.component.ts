@@ -27,8 +27,7 @@ export class CompanyAdministratorOverviewComponent {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       city: ['', Validators.required],
-      country: ['', Validators.required],
-      company: ['', Validators.required]
+      country: ['', Validators.required]
     });
 
     this. changePasswordForm = this.formBuilder.group({
@@ -68,7 +67,6 @@ export class CompanyAdministratorOverviewComponent {
     }
   }
   
-
   onEditClicked() {
     this.shouldEdit = true;
     this.shouldRenderCompanyAdminForm = true;
@@ -77,12 +75,11 @@ export class CompanyAdministratorOverviewComponent {
       firstName: this.companyAdmin.firstName,
       lastName: this.companyAdmin.lastName,
       city: this.companyAdmin.city,
-      country: this.companyAdmin.country,
-      company: this.companyAdmin.company
+      country: this.companyAdmin.country
     });
   }
   
-  updateCompany() {
+  updateCompanyAdmin() {
     if (this.companyAdminForm.valid) {
       const updatedCompanyAdmin: CompanyAdministrator = this.companyAdminForm.value;
 
@@ -108,10 +105,6 @@ export class CompanyAdministratorOverviewComponent {
   onChangePasswordClicked() {
     this.shouldChange = true;
     this.shouldRenderChangePasswordForm = true;
-
-    this.changePasswordForm.patchValue({
-      oldPassword: this.companyAdmin.password,
-    });
   }
   
   changePassword() {
@@ -119,33 +112,25 @@ export class CompanyAdministratorOverviewComponent {
       const oldPassword = this.changePasswordForm.get('oldPassword')?.value;
       const newPassword = this.changePasswordForm.get('newPassword')?.value;
   
-      // Dodajte proveru da li stara lozinka odgovara trenutnoj lozinci korisnika
-      if (oldPassword !== this.companyAdmin.password) {
-        console.error('Old password does not match current password');
-        // Dodajte odgovarajući korisnički interfejs ili poruku o grešci
-        return;
-      }
-  
-      // Ako stara lozinka odgovara, izvršite ažuriranje lozinke
-      const updatedCompanyAdmin: CompanyAdministrator = { ...this.companyAdmin, password: newPassword };
-  
-      this.companyAdminService.changePassword(this.companyAdmin.id, updatedCompanyAdmin).subscribe(
-        () => {
+      this.companyAdminService.changePassword(this.companyAdmin.id, oldPassword, newPassword).subscribe(
+        (updatedCompanyAdmin) => {
           this.companyAdmin = updatedCompanyAdmin;
           this.shouldRenderChangePasswordForm = false;
           this.shouldChange = false;
-          console.log('Company administrator updated successfully');
+          console.log('Password for company administrator updated successfully');
+
+          this.changePasswordForm.get('oldPassword')?.setValue('');
+          this.changePasswordForm.get('newPassword')?.setValue('');
         },
         error => {
-          console.error('Error updating company administrator:', error);
-          // Dodajte odgovarajući korisnički interfejs ili poruku o grešci
+          console.error('Error updating password for company administrator:', error);
         }
       );
     }
   }
   
   cancelChange() {
-    this.shouldEdit = false;
-    this.shouldRenderCompanyAdminForm = false;
+    this.shouldChange = false;
+    this.shouldRenderChangePasswordForm = false;
   }
 }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CompanyAdministrator } from 'src/app/shared/model/company-administrator.model';
@@ -22,9 +22,9 @@ export class CompanyAdministratorService {
     return this.http.put<CompanyAdministrator>(url, companyAdministrator);
   }
 
-  changePassword(id: number, companyAdministrator: CompanyAdministrator): Observable<CompanyAdministrator> {
-    const url = `${this.apiUrl}/${id}/changePassword`;
-    return this.http.put<CompanyAdministrator>(url, companyAdministrator);
+  changePassword(id: number, oldPassword: string, newPassword: string): Observable<CompanyAdministrator> {
+    const url = `${this.apiUrl}/${id}/changePassword?oldPassword=${oldPassword}&newPassword=${newPassword}`;
+    return this.http.put<CompanyAdministrator>(url, {});
   }
 
   updatePassword(id: number, newPassword: string): Observable<void> {

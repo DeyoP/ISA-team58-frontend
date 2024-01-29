@@ -13,7 +13,6 @@ import { RouterLink } from '@angular/router';
   declarations: [
     CompanyAdministratorOverviewComponent,
     CalendarComponent,
-    CompanyAdminHomePageComponent,
     CompanyAdminHomePageComponent
   ],
   imports: [
