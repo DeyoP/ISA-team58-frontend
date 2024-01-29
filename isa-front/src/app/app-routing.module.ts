@@ -16,6 +16,7 @@ import { ComplaintsComponent } from './feature-modules/system-administrator/comp
 import { AdministratorRegistrationComponent } from './feature-modules/system-administrator/administrator-registration/administrator-registration.component';
 import { ChangePasswordComponent } from './feature-modules/account/change-password/change-password.component';
 import { CalendarComponent } from './feature-modules/company-administrator/calendar/calendar.component';
+import { CompanyAdminHomePageComponent } from './feature-modules/company-administrator/company-admin-home-page/company-admin-home-page.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -35,7 +36,7 @@ const routes: Routes = [
   { path: 'administratorRegistration', component: AdministratorRegistrationComponent},
   { path: 'change-password', component: ChangePasswordComponent},
   { path: 'calendar', component: CalendarComponent},
-
+  { path: 'companyAdminHome', component: CompanyAdminHomePageComponent}
 ];
 
 @NgModule({
