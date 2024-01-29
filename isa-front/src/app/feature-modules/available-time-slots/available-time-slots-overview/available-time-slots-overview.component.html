@@ -12,9 +12,9 @@
         </thead>
         <tbody>
             <tr *ngFor="let availableTimeSlot of availableTimeSlots">
-                <td class="name">{{ availableTimeSlot.date }}</td>
+                <td class="name">{{ availableTimeSlot.date | date: 'dd.MM.yyyy' }}</td>
                 <td class="description">{{ availableTimeSlot.duration }}</td>
-                <td class="type">{{ availableTimeSlot.time }}</td>
+                <td class="type">{{ availableTimeSlot.time.toString().replace(',', ':') }}</td>
             </tr>
         </tbody>
     </table>
@@ -30,9 +30,6 @@
             <label for="duration">Duration:</label>
             <textarea id="duration" formControlName="duration"></textarea>
 
-            <label for="administrator">Administrator:</label>
-            <input type="text" id="administrator" formControlName="administrator">
-
             <label for="company">Company:</label>
             <select formControlName="company" (change)="onCompanySelected()">
                 <option *ngFor="let company of companies" [value]="company.id">{{ company.name }}</option>
@@ -41,6 +38,11 @@
             <label for="equipment">Equipment:</label>
             <select formControlName="equipment">
                <option *ngFor="let equipment of equipments" [value]="equipment.id">{{ equipment.name }}</option>
+            </select>
+
+            <label for="administrator">Administrator:</label>
+            <select formControlName="administrator">
+                <option *ngFor="let admin of companyAdmins" [value]="admin.id">{{ admin.firstName }} {{admin.lastName}}</option>
             </select>
 
             <button type="button" (click)="addEquipment()">Add</button>

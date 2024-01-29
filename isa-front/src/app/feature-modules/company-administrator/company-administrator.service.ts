@@ -30,4 +30,8 @@ export class CompanyAdministratorService {
   updatePassword(id: number, newPassword: string): Observable<void> {
     return this.http.put<void>(`${this.apiUrl}/${id}/updatePassword`, newPassword);
   }
+
+  adminsByCompany(companyId: number): Observable<CompanyAdministrator[]> {
+    return this.http.get<CompanyAdministrator[]>(`${this.apiUrl}/adminsByCompany/${companyId}`);
+  }
 }

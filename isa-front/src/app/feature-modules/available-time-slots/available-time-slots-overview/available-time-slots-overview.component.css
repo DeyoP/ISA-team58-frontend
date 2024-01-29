@@ -8,12 +8,12 @@
 }
 
 h1 {
-    color: #37a5b1;
+    color: #1f8bca;
     margin-bottom: 20px;
 }
 
 button.add-button {
-    background-color: #37a5b1;
+    background-color: #1f8bca;
     color: white;
     padding: 10px;
     cursor: pointer;
@@ -35,7 +35,7 @@ button.add-button {
 }
 
 .equipment-table th {
-    background-color: #37a5b1;
+    background-color: #1f8bca;
     color: white;
 }
 
@@ -52,10 +52,11 @@ button.add-button {
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
+    margin: 10px;
 }
 
 .form-group button {
-    background-color: #37a5b1;
+    background-color: #1f8bca;
     color: white;
     padding: 10px;
     margin: 10px;

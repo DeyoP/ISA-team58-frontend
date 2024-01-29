@@ -7,6 +7,8 @@ import { Equipment } from 'src/app/shared/model/equipment.model';
 import { CompanyService } from '../../company/company.service';
 import { CompanyAdministratorService } from '../../company-administrator/company-administrator.service';
 import { AuthenticationService } from '../../auth/auth.service';
+import { Time } from '@angular/common';
+import { CompanyAdministrator } from 'src/app/shared/model/company-administrator.model';
 
 @Component({
   selector: 'app-available-time-slots-overview',
@@ -22,19 +24,22 @@ export class AvailableTimeSlotsOverviewComponent implements OnInit{
   equipments: Equipment[] = [];
   selectedCompany: Company = {} as Company;
   selectedEquipment: Equipment = {} as Equipment;
+  companyAdmins: CompanyAdministrator[] = [];
+  selectedAdmin: CompanyAdministrator = {} as CompanyAdministrator;
 
   addForm: FormGroup;
   shouldRenderAddForm = false;
   shouldAdd = false;
   
-  constructor(private service: AvailableTimeSlotsService, private companyService: CompanyService, private formBuilder: FormBuilder, private authService: AuthenticationService) {
+  constructor(private service: AvailableTimeSlotsService, private companyService: CompanyService, private formBuilder: FormBuilder, private authService: AuthenticationService, 
+    private adminService: CompanyAdministratorService) {
     this.addForm = this.formBuilder.group({
       duration: ['', Validators.required],
       date: ['', Validators.required],
       time: ['', Validators.required],
-      administrator: ['', Validators.required],
       company: [this.selectedCompany.id, Validators.required],
-      equipment:[this.selectedEquipment.id, Validators.required]
+      equipment:[this.selectedEquipment.id, Validators.required],
+      administrator: [this.selectedAdmin.id, Validators.required]
     });
   }
 
@@ -65,6 +70,7 @@ export class AvailableTimeSlotsOverviewComponent implements OnInit{
     if (selectedCompany) {
       this.selectedCompany = selectedCompany;
       this.loadEquipments(selectedCompany.id);
+      this.loadAdmins(selectedCompany.id);
     }
   }
   
@@ -74,6 +80,11 @@ export class AvailableTimeSlotsOverviewComponent implements OnInit{
     });
   }
   
+  loadAdmins(companyId: number) {
+    this.adminService.adminsByCompany(companyId).subscribe(admins => {
+      this.companyAdmins = admins; 
+    }) 
+  }
   
   onAddClicked(): void {
     this.shouldRenderAddForm = true;
@@ -105,5 +116,16 @@ export class AvailableTimeSlotsOverviewComponent implements OnInit{
     this.shouldAdd = false;
     this.shouldRenderAddForm = false;
   } 
+  
+  formatTime(time: Time): string {
+    if (!time) return '';
+  
+    const hours = time.hours;
+    const minutes = time.minutes;
+  
+    const formattedTime = `${hours < 10 ? '0' : ''}${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
+  
+    return formattedTime;
+  }
   
 }

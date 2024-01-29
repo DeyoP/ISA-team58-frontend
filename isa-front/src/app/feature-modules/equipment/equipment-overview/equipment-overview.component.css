@@ -32,7 +32,7 @@ h1 {
 }
 
 .search-container button {
-    background-color: #37a5b1;
+    background-color: #1f8bca;
     color: white;
     padding: 10px;
     border: none;
@@ -42,7 +42,7 @@ h1 {
 }
 
 button.add-button {
-    background-color: #37a5b1;
+    background-color: #1f8bca;
     color: white;
     padding: 10px;
     cursor: pointer;
@@ -64,7 +64,7 @@ button.add-button {
 }
 
 .equipment-table th {
-    background-color: #37a5b1;
+    background-color: #1f8bca;
     color: white;
 }
 
@@ -73,7 +73,7 @@ button.add-button {
 }
 
 .actions button.update-button {
-    background-color: #37a5b1;
+    background-color: #1f8bca;
     color: white;
     padding: 10px;
     border: none;
@@ -106,7 +106,7 @@ button.add-button {
 }
 
 .form-group button {
-    background-color: #37a5b1;
+    background-color: #1f8bca;
     color: white;
     padding: 10px;
     margin: 10px;
