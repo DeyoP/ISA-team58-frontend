@@ -33,7 +33,7 @@ export class AppointmentsOverviewComponent {
           console.log(result)
         }
       })
-    }
+    } console.log(this.loggedInRegisteredUser?.penaltyPoints);
   }
 
   cancelAppointment(appointmentId : number) : void {
@@ -45,9 +45,5 @@ export class AppointmentsOverviewComponent {
         console.log(result)
       }
     });
-
-    // registered account gets one penalty point
-    this.loggedInRegisteredUser!.penaltyPoints += 1;
-    //this.authService.update()
   }
 }
