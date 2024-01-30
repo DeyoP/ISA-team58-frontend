@@ -117,15 +117,4 @@ export class AvailableTimeSlotsOverviewComponent implements OnInit{
     this.shouldRenderAddForm = false;
   } 
   
-  formatTime(time: Time): string {
-    if (!time) return '';
-  
-    const hours = time.hours;
-    const minutes = time.minutes;
-  
-    const formattedTime = `${hours < 10 ? '0' : ''}${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
-  
-    return formattedTime;
-  }
-  
 }

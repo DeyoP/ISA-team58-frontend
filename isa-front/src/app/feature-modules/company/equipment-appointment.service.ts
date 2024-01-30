@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 import { EquipmentAppointment } from 'src/app/shared/model/equipmentAppointment.model';
 
 @Injectable({
@@ -44,4 +44,19 @@ export class EquipmentAppointmentService {
   cancelAppointment(id: number): Observable<EquipmentAppointment>{
     return this.http.put<EquipmentAppointment>(`${this.apiUrl}/cancelAppointment/${id}`, null);
   }
+
+  markAppointmentAsTaken(id: number, adminId: number): Observable<EquipmentAppointment> {
+    const url = `${this.apiUrl}/${id}/markAsTaken?administratorId=${adminId}`;
+    return this.http.post(url, {}).pipe(
+      map(response => response as EquipmentAppointment),
+      catchError((error) => {
+        if (error instanceof HttpErrorResponse && error.status === 200) {
+          return of(error.error as EquipmentAppointment);
+        } else {
+          throw error;
+        }
+      })
+    );
+  }
+  
 }

@@ -13,11 +13,13 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { CompanyAdministratorModule } from '../company-administrator/company-administrator.module';
+import { EquipmentAppointmentComponent } from './equipment-appointment/equipment-appointment.component';
 
 @NgModule({
   declarations: [
     CompanyOverviewComponent,
     ViewCompaniesComponent,
+    EquipmentAppointmentComponent,
   ],
   imports: [
     CommonModule,

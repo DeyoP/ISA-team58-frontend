@@ -19,6 +19,7 @@ import { CalendarComponent } from './feature-modules/company-administrator/calen
 import { CompanyAdminHomePageComponent } from './feature-modules/company-administrator/company-admin-home-page/company-admin-home-page.component';
 import { ProfileOverviewComponent } from './feature-modules/account/profile-overview/profile-overview.component';
 import { AppointmentsOverviewComponent } from './feature-modules/account/appointments-overview/appointments-overview.component';
+import { EquipmentAppointmentComponent } from './feature-modules/company/equipment-appointment/equipment-appointment.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -38,10 +39,11 @@ const routes: Routes = [
   { path: 'administratorRegistration', component: AdministratorRegistrationComponent},
   { path: 'change-password', component: ChangePasswordComponent},
   { path: 'calendar', component: CalendarComponent},
-  { path: 'companyAdminHome', component: CompanyAdministratorOverviewComponent},
+  { path: 'companyAdminHome', component: CompanyAdminHomePageComponent},
   { path: 'profile-overview', component: ProfileOverviewComponent},
   { path: 'profile-overview/edit-user', component: EditUserComponent},
-  { path: 'equipment-appointments', component: AppointmentsOverviewComponent}
+  { path: 'equipment-appointments', component: AppointmentsOverviewComponent},
+  { path: 'equipmentAppointment', component: EquipmentAppointmentComponent}
 ];
 
 @NgModule({
