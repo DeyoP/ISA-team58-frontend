@@ -8,4 +8,5 @@ export interface CompanyAdministrator extends Account {
     city: string;
     country: string; 
     company: Company;
+    firstLogin: boolean;
 }

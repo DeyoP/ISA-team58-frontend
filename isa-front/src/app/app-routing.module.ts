@@ -20,6 +20,7 @@ import { CompanyAdminHomePageComponent } from './feature-modules/company-adminis
 import { ProfileOverviewComponent } from './feature-modules/account/profile-overview/profile-overview.component';
 import { AppointmentsOverviewComponent } from './feature-modules/account/appointments-overview/appointments-overview.component';
 import { EquipmentAppointmentComponent } from './feature-modules/company/equipment-appointment/equipment-appointment.component';
+import { UsersWithAppointmentComponent } from './feature-modules/account/users-with-appointment/users-with-appointment.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -43,7 +44,8 @@ const routes: Routes = [
   { path: 'profile-overview', component: ProfileOverviewComponent},
   { path: 'profile-overview/edit-user', component: EditUserComponent},
   { path: 'equipment-appointments', component: AppointmentsOverviewComponent},
-  { path: 'equipmentAppointment', component: EquipmentAppointmentComponent}
+  { path: 'equipmentAppointment', component: EquipmentAppointmentComponent},
+  { path: 'usersWithAppointment', component: UsersWithAppointmentComponent}
 ];
 
 @NgModule({

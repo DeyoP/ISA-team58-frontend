@@ -35,7 +35,8 @@ import { EquipmentAppointmentComponent } from './equipment-appointment/equipment
     CompanyAdministratorModule,
   ],
   exports: [
-    CompanyOverviewComponent
+    CompanyOverviewComponent,
+    EquipmentAppointmentComponent
   ]
 })
 export class CompanyModule { }

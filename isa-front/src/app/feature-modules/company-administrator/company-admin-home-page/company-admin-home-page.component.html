@@ -11,7 +11,7 @@
 <div *ngIf="isMenuOpen" class="sidebar">
   <ul>
     <li>
-      <a routerLink="lista-korisnika">Users who reserved the equipment</a>
+      <a [routerLink]="'/usersWithAppointment'">Users with appointment</a>
     </li>
     <li>
       <a [routerLink]="'/equipmentAppointment'">Taking over the equipment</a>

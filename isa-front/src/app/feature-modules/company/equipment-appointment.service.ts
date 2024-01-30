@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, of } from 'rxjs';
 import { EquipmentAppointment } from 'src/app/shared/model/equipmentAppointment.model';
+import { RegisteredUser } from 'src/app/shared/model/registered-user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -59,4 +60,7 @@ export class EquipmentAppointmentService {
     );
   }
   
+  getUsersWithAppointment(): Observable<RegisteredUser[]> {
+    return this.http.get<RegisteredUser[]>(`${this.apiUrl}/usersWithAppointment`);
+  }
 }

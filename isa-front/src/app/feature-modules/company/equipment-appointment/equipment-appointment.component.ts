@@ -46,7 +46,6 @@ export class EquipmentAppointmentComponent implements OnInit {
         },
         (error) => {
           console.error('Error marking appointment as taken:', error);
-         // this.getEquipmentAppointments();
         }
       );
   }
