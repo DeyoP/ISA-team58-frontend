@@ -57,6 +57,7 @@ export class AuthenticationService {
   setCurrentUser(updatedUserData: Account): void {
     // Method to set the current user
     this.currentUser = updatedUserData;
+    console.log(this.currentUser)
   }
 
   logout(): void {

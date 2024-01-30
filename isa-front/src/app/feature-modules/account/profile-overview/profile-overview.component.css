@@ -1,0 +1,49 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  #container {
+    text-align: center; /* Center the content within the container */
+  }
+
+  .user-card {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: left;
+    display: inline-block; /* Make it an inline block to center it */
+    margin-top: 30px;
+  }
+
+  .user-card h2 {
+    color: #333;
+  }
+
+  .user-detail {
+    margin-bottom: 10px;
+  }
+
+  .user-label {
+    font-weight: bold;
+    color: #555;
+  }
+
+  .icon-container {
+    position: relative;
+  }
+  
+  .icon {
+    position: absolute;
+    top: 10px; /* Adjust the top position as needed */
+    right: 10px; /* Adjust the right position as needed */
+    cursor: pointer;
+  }
