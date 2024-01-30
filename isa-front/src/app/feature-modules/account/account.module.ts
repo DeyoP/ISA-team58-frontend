@@ -6,6 +6,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ActivationComponent } from './activation/activation.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ProfileOverviewComponent } from './profile-overview/profile-overview.component';
+import { AppointmentsOverviewComponent } from './appointments-overview/appointments-overview.component';
 
 
 
@@ -15,7 +17,9 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     RegisterComponent,
     ActivationComponent,
     EditUserComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    ProfileOverviewComponent,
+    AppointmentsOverviewComponent
   ],
   imports: [
     CommonModule,

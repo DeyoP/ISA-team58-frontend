@@ -84,6 +84,7 @@ onSubmit() {
       phoneNumber: this.editUserForm.value.phoneNumber,
       job: this.editUserForm.value.job,
       roles: this.loggedInAccount?.roles,
+      penaltyPoints: this.loggedInAccount?.penaltyPoints,
     };
     this.authService.setCurrentUser(updatedUserData);
 

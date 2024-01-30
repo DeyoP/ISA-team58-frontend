@@ -29,7 +29,19 @@ export class EquipmentAppointmentService {
     return this.http.get<EquipmentAppointment[]>(`${this.apiUrl}/getAll`);
   }
 
+  getAllReserved(): Observable<EquipmentAppointment[]> {
+    return this.http.get<EquipmentAppointment[]>(`${this.apiUrl}/getAllReserved`);
+  }
+
+  getAllReservedByUserId(id: number): Observable<EquipmentAppointment[]> {
+    return this.http.get<EquipmentAppointment[]>(`${this.apiUrl}/getAllByUser/${id}`);
+  }
+
   getByCompanyId(companyId: number): Observable<EquipmentAppointment[]> {
     return this.http.get<EquipmentAppointment[]>(`${this.apiUrl}/getByCompany/${companyId}`);
+  }
+
+  cancelAppointment(id: number): Observable<EquipmentAppointment>{
+    return this.http.put<EquipmentAppointment>(`${this.apiUrl}/cancelAppointment/${id}`, null);
   }
 }

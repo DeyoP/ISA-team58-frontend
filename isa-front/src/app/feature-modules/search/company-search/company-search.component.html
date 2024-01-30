@@ -12,6 +12,10 @@
     <input type="number" id="maxRating" [(ngModel)]="maxRating" />
   
     <button (click)="onSearch()">Search</button>
+
+    <button (click)="sortCompaniesByName()">Sort by Name</button>
+    <button (click)="sortCompaniesByCity()">Sort by City</button>
+    <button (click)="sortCompaniesByRating()">Sort by Rating</button>
   </div>
   
   <table class="company-table">

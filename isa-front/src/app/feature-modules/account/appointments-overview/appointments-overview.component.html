@@ -1,0 +1,32 @@
+<!-- appointments-overview.component.html -->
+
+<div>
+    <h1>Equipment Appointment Details</h1>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>Equipment ID</th>
+          <th>User ID</th>
+          <th>Available Time Slot ID</th>
+          <th>Extraordinary</th>
+          <th>Company ID</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Use *ngFor to loop through appointments and display each item -->
+        <tr *ngFor="let appointment of appointments">
+          <td>{{ appointment.equipmentId }}</td>
+          <td>{{ appointment.userId }}</td>
+          <td>{{ appointment.availableTimeSlotId }}</td>
+          <td>{{ appointment.extraordinary ? 'Yes' : 'No' }}</td>
+          <td>{{ appointment.companyId }}</td>
+          <td>{{ appointment.status }}</td>
+          <td><button (click)="cancelAppointment(appointment.id)">Cancel</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
