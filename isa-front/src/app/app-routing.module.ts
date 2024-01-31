@@ -45,7 +45,8 @@ const routes: Routes = [
   { path: 'profile-overview/edit-user', component: EditUserComponent},
   { path: 'equipment-appointments', component: AppointmentsOverviewComponent},
   { path: 'equipmentAppointment', component: EquipmentAppointmentComponent},
-  { path: 'usersWithAppointment', component: UsersWithAppointmentComponent}
+  { path: 'usersWithAppointment', component: UsersWithAppointmentComponent},
+  { path: 'calendar/:companyId', component: CalendarComponent}
 ];
 
 @NgModule({
