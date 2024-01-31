@@ -81,7 +81,7 @@ export class AppointmentModalComponent {
 
       const appointment : EquipmentAppointment = {
       id : 0,
-      equipmentId: slot.id,
+      equipmentId: slot.equipmentId,
       userId: slot.registeredUser,
       availableTimeSlotId: createdSlot.id,
       extraordinary: true,
@@ -89,6 +89,11 @@ export class AppointmentModalComponent {
       status : appointmentStatus.RESERVED,
     }
 
+    this.appointmentService.create(appointment).subscribe({
+      next: () => {
+        console.log("DEYAN PELEMISHSHHSHS")
+      }
+    });
     },
     error => {
       console.error('Error adding available time slot:', error);
