@@ -30,9 +30,6 @@
             <label for="duration">Duration:</label>
             <textarea id="duration" formControlName="duration"></textarea>
 
-            <label for="administrator">Administrator:</label>
-            <input type="text" id="administrator" formControlName="administrator">
-
             <label for="company">Company:</label>
             <select formControlName="company" (change)="onCompanySelected()">
                 <option *ngFor="let company of companies" [value]="company.id">{{ company.name }}</option>

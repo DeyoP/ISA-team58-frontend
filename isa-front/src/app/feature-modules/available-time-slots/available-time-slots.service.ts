@@ -18,6 +18,10 @@ export class AvailableTimeSlotsService {
   }
 
   addAvailabeTimeSlot(availableTimeSlot: AvailableTimeSlots, companyId: number, administratorId: number, equipmentId: number): Observable<AvailableTimeSlots> {
+    console.log(availableTimeSlot)
+    console.log(administratorId)
+    console.log(companyId)
+    console.log(equipmentId)
     const url = `${this.apiUrl}/add?companyId=${companyId}&administratorId=${administratorId}&equipmentId=${equipmentId}`;
     return this.http.post<AvailableTimeSlots>(url, availableTimeSlot);  
   }

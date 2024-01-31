@@ -52,4 +52,8 @@ export class EquipmentAppointmentService {
   cancelAppointment(id: number): Observable<EquipmentAppointment>{
     return this.http.put<EquipmentAppointment>(`${this.apiUrl}/cancelAppointment/${id}`, null);
   }
+
+  userHasAppointmentInCompany(userId: number, companyId: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/hasAppointmentInCompany/${userId}/${companyId}`);
+  }
 }

@@ -22,7 +22,7 @@ export class AvailableTimeSlotsOverviewComponent implements OnInit{
   equipments: Equipment[] = [];
   selectedCompany: Company = {} as Company;
   selectedEquipment: Equipment = {} as Equipment;
-
+  admininstartorId: number = 0;
   addForm: FormGroup;
   shouldRenderAddForm = false;
   shouldAdd = false;
@@ -32,7 +32,6 @@ export class AvailableTimeSlotsOverviewComponent implements OnInit{
       duration: ['', Validators.required],
       date: ['', Validators.required],
       time: ['', Validators.required],
-      administrator: ['', Validators.required],
       company: [this.selectedCompany.id, Validators.required],
       equipment:[this.selectedEquipment.id, Validators.required]
     });
@@ -41,7 +40,6 @@ export class AvailableTimeSlotsOverviewComponent implements OnInit{
   ngOnInit(): void {
     this.getAvailableTimeSlots();
     this.loadCompanies();
-    console.log(this.authService.currentUserValue)
   }
   
   getAvailableTimeSlots(): void {
@@ -66,6 +64,11 @@ export class AvailableTimeSlotsOverviewComponent implements OnInit{
       this.selectedCompany = selectedCompany;
       this.loadEquipments(selectedCompany.id);
     }
+
+    if(selectedCompany){
+    this.admininstartorId = selectedCompany.administratorId ;
+    console.log(this.admininstartorId)
+    }
   }
   
   loadEquipments(companyId: number) {
@@ -83,11 +86,11 @@ export class AvailableTimeSlotsOverviewComponent implements OnInit{
   addEquipment(): void {
     if (this.addForm.valid) {
       const selectedCompanyId = this.addForm.controls['company'].value;
-      const selectedAdministratorId = this.addForm.controls['administrator'].value;
       const selectedEquipmentId = this.addForm.controls['equipment'].value;
       const newAvailableTimeSlot: AvailableTimeSlots = this.addForm.value;
-  
-      this.service.addAvailabeTimeSlot(newAvailableTimeSlot, selectedCompanyId, selectedAdministratorId, selectedEquipmentId).subscribe(
+      
+      console.log("add")
+      this.service.addAvailabeTimeSlot(newAvailableTimeSlot, selectedCompanyId, this.admininstartorId, selectedEquipmentId).subscribe(
         () => {
           this.shouldRenderAddForm = false;
           this.shouldAdd = false;
