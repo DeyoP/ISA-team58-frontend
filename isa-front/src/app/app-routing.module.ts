@@ -19,6 +19,7 @@ import { CalendarComponent } from './feature-modules/company-administrator/calen
 import { CompanyAdminHomePageComponent } from './feature-modules/company-administrator/company-admin-home-page/company-admin-home-page.component';
 import { ProfileOverviewComponent } from './feature-modules/account/profile-overview/profile-overview.component';
 import { AppointmentsOverviewComponent } from './feature-modules/account/appointments-overview/appointments-overview.component';
+import { EquipmentReservationQrComponent } from './feature-modules/equipment/equipment-reservation-qr/equipment-reservation-qr.component';
 //import { CompanyAdminHomePageComponent } from './feature-modules/company-administrator/company-admin-home-page/company-admin-home-page.component';
 
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'company/:id', component: CompanyOverviewComponent },
   { path: 'view-companies', component: ViewCompaniesComponent },
   { path: 'companies/:id', component: CompanyOverviewComponent },
+  { path: 'equipmentReservationQR', component: EquipmentReservationQrComponent },
   { path: 'companyAdministrator/:id', component: CompanyAdministratorOverviewComponent},
   { path: 'company/:id/equipments', component: EquipmentOverviewComponent},
   { path: 'availableTimeSlots', component: AvailableTimeSlotsOverviewComponent},

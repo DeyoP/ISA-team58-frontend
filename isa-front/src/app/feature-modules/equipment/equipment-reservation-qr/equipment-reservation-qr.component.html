@@ -1,0 +1,3 @@
+<input type="file" accept="image/*" (change)="onImageSelected($event)">
+<img *ngIf="imageUrl" [src]="imageUrl" alt="Selected Image">
+<button (click)="uploadImage()">Scan QR code</button>
