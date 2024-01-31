@@ -18,6 +18,10 @@ export class CompanySearchComponent implements OnInit {
   citySearch: string = '';
   minRating: number = 1;
   maxRating: number = 5;
+
+  sortOrderName: 'asc' | 'desc' = 'asc';
+  sortOrderCity: 'asc' | 'desc' = 'asc';
+  sortOrderRating: 'asc' | 'desc' = 'asc';
   
   constructor(private service: SearchService) {}
 
@@ -40,4 +44,69 @@ onSearch(): void {
     return nameMatch && cityMatch && ratingMatch;
   });
 }
+
+sortCompaniesByName(): void {
+  if (this.filteredCompanies) {
+    this.filteredCompanies.sort((a, b) => {
+      const nameA = a.name.toLowerCase();
+      const nameB = b.name.toLowerCase();
+
+      const sortOrderMultiplier = (this.sortOrderName === 'asc') ? 1 : -1;
+
+      return sortOrderMultiplier * nameA.localeCompare(nameB);
+    });
+
+    // Toggle sortOrder for the next click
+    this.sortOrderName = (this.sortOrderName === 'asc') ? 'desc' : 'asc';
+  }
+}
+
+sortCompaniesByCity(): void {
+  if (this.filteredCompanies) {
+    this.filteredCompanies.sort((a, b) => {
+      const nameA = a.city.toLowerCase();
+      const nameB = b.city.toLowerCase();
+
+      const sortOrderMultiplier = (this.sortOrderCity === 'asc') ? 1 : -1;
+
+      return sortOrderMultiplier * nameA.localeCompare(nameB);
+    });
+
+    // Toggle sortOrder for the next click
+    this.sortOrderCity = (this.sortOrderCity === 'asc') ? 'desc' : 'asc';
+  }
+}
+
+sortCompaniesByRating(): void {
+  if (this.filteredCompanies) {
+    this.filteredCompanies.sort((a, b) => {
+      let valueA, valueB;
+
+      if (typeof a.rating === 'number' && typeof b.rating === 'number') {
+        // If both ratings are numbers, compare them directly
+        valueA = a.rating;
+        valueB = b.rating;
+      } else {
+        // If one or both ratings are not numbers, compare them as strings
+        valueA = String(a.rating);
+        valueB = String(b.rating);
+      }
+
+      const sortOrderMultiplier = (this.sortOrderRating === 'asc') ? 1 : -1;
+
+      if (valueA < valueB) {
+        return -1 * sortOrderMultiplier;
+      } else if (valueA > valueB) {
+        return 1 * sortOrderMultiplier;
+      } else {
+        return 0;
+      }
+    });
+
+    // Toggle sortOrder for the next click
+    this.sortOrderRating = (this.sortOrderRating === 'asc') ? 'desc' : 'asc';
+  }
+}
+
+
 }

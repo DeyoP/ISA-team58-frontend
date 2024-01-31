@@ -1,0 +1,54 @@
+<div *ngIf="loggedInAccount">
+    <div *ngIf="loggedInRegisteredUser" id="container">
+        <div class="user-card">
+            <div class="icon-container">
+                <div class="icon">
+                  <i class="fas fa-cogs" routerLink="/edit-user"></i>
+                </div>
+              </div>
+
+            <h2>User Information</h2>
+        
+            <div class="user-detail">
+              <span class="user-label">First Name: </span>
+              <span>{{ loggedInRegisteredUser.firstName }}</span>
+            </div>
+        
+            <div class="user-detail">
+              <span class="user-label">Last Name: </span>
+              <span>{{ loggedInRegisteredUser.lastName }}</span>
+            </div>
+        
+            <div class="user-detail">
+              <span class="user-label">City: </span>
+              <span>{{ loggedInRegisteredUser.city }}</span>
+            </div>
+        
+            <div class="user-detail">
+              <span class="user-label">Country: </span>
+              <span>{{ loggedInRegisteredUser.country }}</span>
+            </div>
+        
+            <div class="user-detail">
+              <span class="user-label">Phone Number: </span>
+              <span>{{ loggedInRegisteredUser.phoneNumber }}</span>
+            </div>
+        
+            <div class="user-detail">
+              <span class="user-label">Job: </span>
+              <span>{{ loggedInRegisteredUser.job }}</span>
+            </div>
+        
+            <div class="user-detail">
+              <span class="user-label">Workplace ID: </span>
+              <span>{{ loggedInRegisteredUser.workplaceId }}</span>
+            </div>
+
+            <div class="user-detail">
+              <span class="user-label">Penalty points: </span>
+              <span>{{ loggedInRegisteredUser.penaltyPoints }}</span>
+            </div>
+          </div>
+
+    </div>
+</div>

@@ -33,6 +33,8 @@
                     <button (click)="removeReservedEquipment(reservedEquipment)">Remove</button>
                 </li>
             </ul>
+            <td><button (click)="makeExtraordinaryAppointment(reservedEquipments)" *ngIf="reservedEquipments.length === 1">Reserve extraordinarily</button></td>
+
         </div>
     <h3 class="availableTimeSlots">Available time slots for equipment pickup</h3>
     <table>
@@ -42,7 +44,6 @@
                 <th>Time</th>
                 <th>Duration</th>
                 <th>Regular Reservation</th>
-                <th>Extraordinary Reservation</th>
             </tr>
         </thead>
         <tbody>
@@ -51,7 +52,6 @@
                 <td>{{ availableTimeSlot.time }}</td>
                 <td>{{ availableTimeSlot.duration }}</td>
                 <td><button (click)="makeAppointment(availableTimeSlot)" *ngIf="isAdvailable(availableTimeSlot)">Reserve regularly</button></td>
-                <td><button (click)="makeExtraordinaryAppointment(availableTimeSlot)" *ngIf="isExtroardinarliyAdvailable(availableTimeSlot)">Reserve extraordinarily</button></td>
             </tr>
         </tbody>
     </table>   

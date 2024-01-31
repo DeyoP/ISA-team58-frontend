@@ -29,7 +29,31 @@ export class EquipmentAppointmentService {
     return this.http.get<EquipmentAppointment[]>(`${this.apiUrl}/getAll`);
   }
 
+  getAllReserved(): Observable<EquipmentAppointment[]> {
+    return this.http.get<EquipmentAppointment[]>(`${this.apiUrl}/getAllReserved`);
+  }
+
+  getAllTaken(): Observable<EquipmentAppointment[]> {
+    return this.http.get<EquipmentAppointment[]>(`${this.apiUrl}/getAllTaken`);
+  }
+
+  getAllReservedByUserId(id: number): Observable<EquipmentAppointment[]> {
+    return this.http.get<EquipmentAppointment[]>(`${this.apiUrl}/getAllReservedByUser/${id}`);
+  }
+
+  getAllTakenByUserId(id: number): Observable<EquipmentAppointment[]> {
+    return this.http.get<EquipmentAppointment[]>(`${this.apiUrl}/getAllTakenByUser/${id}`);
+  }
+
   getByCompanyId(companyId: number): Observable<EquipmentAppointment[]> {
     return this.http.get<EquipmentAppointment[]>(`${this.apiUrl}/getByCompany/${companyId}`);
+  }
+
+  cancelAppointment(id: number): Observable<EquipmentAppointment>{
+    return this.http.put<EquipmentAppointment>(`${this.apiUrl}/cancelAppointment/${id}`, null);
+  }
+
+  userHasAppointmentInCompany(userId: number, companyId: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/hasAppointmentInCompany/${userId}/${companyId}`);
   }
 }

@@ -17,6 +17,9 @@ import { AdministratorRegistrationComponent } from './feature-modules/system-adm
 import { ChangePasswordComponent } from './feature-modules/account/change-password/change-password.component';
 import { CalendarComponent } from './feature-modules/company-administrator/calendar/calendar.component';
 import { CompanyAdminHomePageComponent } from './feature-modules/company-administrator/company-admin-home-page/company-admin-home-page.component';
+import { ProfileOverviewComponent } from './feature-modules/account/profile-overview/profile-overview.component';
+import { AppointmentsOverviewComponent } from './feature-modules/account/appointments-overview/appointments-overview.component';
+//import { CompanyAdminHomePageComponent } from './feature-modules/company-administrator/company-admin-home-page/company-admin-home-page.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -37,6 +40,10 @@ const routes: Routes = [
   { path: 'change-password', component: ChangePasswordComponent},
   { path: 'calendar', component: CalendarComponent},
   { path: 'companyAdminHome', component: CompanyAdminHomePageComponent}
+  { path: 'companyAdminHome', component: CompanyAdministratorOverviewComponent},
+  { path: 'profile-overview', component: ProfileOverviewComponent},
+  { path: 'profile-overview/edit-user', component: EditUserComponent},
+  { path: 'equipment-appointments', component: AppointmentsOverviewComponent}
 ];
 
 @NgModule({
@@ -44,3 +51,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+

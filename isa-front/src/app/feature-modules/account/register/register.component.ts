@@ -123,6 +123,7 @@ export class RegisterComponent implements OnInit {
         isDeleted:false,
         dtype: "registered_user",
         roles: [],
+        penaltyPoints: 0,
       };
       this.authService.signup(formData).subscribe(
         () => {

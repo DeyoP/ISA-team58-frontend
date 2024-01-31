@@ -6,9 +6,10 @@ import { CompanyAdministrator } from "./company-administrator.model";
 export interface AvailableTimeSlots {
     id: number;
     date: Date;
-    time: Time;
+    time: string;
     duration: number;
     companyAdministratorId: number;
     companyId: number;
     equipmentId: number;
+    registeredUser: number;
 }

@@ -27,6 +27,7 @@ export class AvailableTimeSlotsOverviewComponent implements OnInit{
   companyAdmins: CompanyAdministrator[] = [];
   selectedAdmin: CompanyAdministrator = {} as CompanyAdministrator;
 
+  admininstartorId: number = 0;
   addForm: FormGroup;
   shouldRenderAddForm = false;
   shouldAdd = false;
@@ -46,7 +47,6 @@ export class AvailableTimeSlotsOverviewComponent implements OnInit{
   ngOnInit(): void {
     this.getAvailableTimeSlots();
     this.loadCompanies();
-    console.log(this.authService.currentUserValue)
   }
   
   getAvailableTimeSlots(): void {
@@ -72,6 +72,11 @@ export class AvailableTimeSlotsOverviewComponent implements OnInit{
       this.loadEquipments(selectedCompany.id);
       this.loadAdmins(selectedCompany.id);
     }
+
+    if(selectedCompany){
+    this.admininstartorId = selectedCompany.administratorId ;
+    console.log(this.admininstartorId)
+    }
   }
   
   loadEquipments(companyId: number) {
@@ -94,11 +99,11 @@ export class AvailableTimeSlotsOverviewComponent implements OnInit{
   addEquipment(): void {
     if (this.addForm.valid) {
       const selectedCompanyId = this.addForm.controls['company'].value;
-      const selectedAdministratorId = this.addForm.controls['administrator'].value;
       const selectedEquipmentId = this.addForm.controls['equipment'].value;
       const newAvailableTimeSlot: AvailableTimeSlots = this.addForm.value;
-  
-      this.service.addAvailabeTimeSlot(newAvailableTimeSlot, selectedCompanyId, selectedAdministratorId, selectedEquipmentId).subscribe(
+      
+      console.log("add")
+      this.service.addAvailabeTimeSlot(newAvailableTimeSlot, selectedCompanyId, this.admininstartorId, selectedEquipmentId).subscribe(
         () => {
           this.shouldRenderAddForm = false;
           this.shouldAdd = false;

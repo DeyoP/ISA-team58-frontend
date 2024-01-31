@@ -7,8 +7,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AvailableTimeSlots } from 'src/app/shared/model/available-time-slots.model';
 import { MatDialog } from '@angular/material/dialog';
 import { EquipmentAppointmentService } from '../equipment-appointment.service';
-import { EquipmentAppointment } from 'src/app/shared/model/equipmentAppointment.model';
+import { EquipmentAppointment, appointmentStatus } from 'src/app/shared/model/equipmentAppointment.model';
 import { AuthenticationService } from '../../auth/auth.service';
+import { AppointmentModalComponent } from '../appointment-modal/appointment-modal.component';
 
 @Component({
   selector: 'app-company-overview',
@@ -30,7 +31,7 @@ export class CompanyOverviewComponent implements OnInit {
   allAppointments: EquipmentAppointment[] = [];
   shouldRenderCalendar: boolean = false;
 
-  constructor(private companyService: CompanyService, private equipmentAppointmentService: EquipmentAppointmentService, private route: ActivatedRoute, private formBuilder: FormBuilder, private authService: AuthenticationService) {
+  constructor(private companyService: CompanyService, private equipmentAppointmentService: EquipmentAppointmentService, private route: ActivatedRoute, private formBuilder: FormBuilder, private authService: AuthenticationService,private dialog: MatDialog) {
     this.companyForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
@@ -69,6 +70,7 @@ export class CompanyOverviewComponent implements OnInit {
         availableTimeSlotId: avaibleTimeSlot.id,
         extraordinary: false,
         companyId : this.company.id,
+        status : appointmentStatus.RESERVED,
       }
 
       this.equipmentAppointmentService.create(appointment).subscribe({
@@ -79,25 +81,23 @@ export class CompanyOverviewComponent implements OnInit {
     }
   }
 
-  makeExtraordinaryAppointment(avaibleTimeSlot: AvailableTimeSlots): void {
-    for (const reservedEquipment of this.reservedEquipments) {
-      const appointment : EquipmentAppointment = {
-        id : 0,
-        equipmentId: reservedEquipment.id,
-        userId: this.authService.currentUserValue?.id || 0,
-        availableTimeSlotId: avaibleTimeSlot.id,
-        extraordinary: true,
-        companyId: this.company.id,
-      }
+  makeExtraordinaryAppointment(equipments: Equipment[]): void {
+    if(this.reservedEquipments.length === 1){
+    const dialogRef = this.dialog.open(AppointmentModalComponent, {
+      width: '500px', // Set the width as per your requirement
+      data: { equipments:  equipments,
+              userId: this.authService.currentUserValue?.id, 
+              companyAdministratorId: this.company.administratorId,
+              companyId: this.companyId }
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      // Handle any data returned when the modal is closed
+      console.log('The dialog was closed', result);
+    });
 
-      this.equipmentAppointmentService.createExtraordinary(appointment).subscribe({
-        next: () => {
-          console.log("DEYAN PELEMISHSHHSHS")
-        }
-      });
-    }
   }
-
+  }
   isAdvailable(availableTimeSlot: any): boolean {
     for (const reservedEquipment of this.reservedEquipments) {
       for (const appointment of this.allAppointments) {
@@ -197,10 +197,19 @@ export class CompanyOverviewComponent implements OnInit {
   }
 
   reserveEquipment(equipment: Equipment) {
-    // Check if the equipment is not already reserved
-    if (!this.reservedEquipments.includes(equipment)) {
-      // Add the equipment to the reserved list
-      this.reservedEquipments.push(equipment);
+    // Check if the equipment is not already reserved and the reservedEquipments list is empty
+    if (!this.reservedEquipments.includes(equipment) && this.reservedEquipments.length < 1) {
+      // Call userHasAppointmentInCompany
+      this.equipmentAppointmentService.userHasAppointmentInCompany(this.authService.currentUserValue?.id || 0, this.company.id)
+        .subscribe(hasAppointment => {
+          // If hasAppointment is false, add the equipment to the reserved list
+          if (!hasAppointment) {
+            this.reservedEquipments.push(equipment);
+          } else {
+            // Handle the case where the user already has an appointment
+            console.log('User already has an appointment in the company');
+          }
+        });
     }
   }
 
