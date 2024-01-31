@@ -56,4 +56,9 @@ export class EquipmentAppointmentService {
   userHasAppointmentInCompany(userId: number, companyId: number): Observable<boolean> {
     return this.http.get<boolean>(`${this.apiUrl}/hasAppointmentInCompany/${userId}/${companyId}`);
   }
+
+  getQRCode(id: number): Observable<Blob> {
+    // Set the responseType to 'blob' to handle binary data
+    return this.http.get(`${this.apiUrl}/getQRCode/${id}`, { responseType: 'blob' });
+  }
 }

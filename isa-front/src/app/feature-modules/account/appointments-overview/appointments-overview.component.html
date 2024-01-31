@@ -12,6 +12,7 @@
           <th>Extraordinary</th>
           <th>Company ID</th>
           <th>Status</th>
+          <th>QR</th>
           <th></th>
         </tr>
       </thead>
@@ -24,6 +25,11 @@
           <td>{{ appointment.extraordinary ? 'Yes' : 'No' }}</td>
           <td>{{ companies[appointment.companyId]?.name }}</td>
           <td>{{ appointment.status }}</td>
+          <td>
+            <div>
+              <img [src]="generateQRCode(appointment.id) | async" alt="QR Code">
+            </div>
+          </td>          
           <td><button (click)="cancelAppointment(appointment.id)">Cancel</button></td>
         </tr>
       </tbody>
@@ -42,6 +48,7 @@
           <th>Extraordinary</th>
           <th>Company ID</th>
           <th>Status</th>
+          <th>QR</th>
         </tr>
       </thead>
       <tbody>
@@ -53,6 +60,12 @@
           <td>{{ appointment.extraordinary ? 'Yes' : 'No' }}</td>
           <td>{{ appointment.companyId }}</td>
           <td>{{ appointment.status }}</td>
+          <td>
+            <div>
+              <img [src]="generateQRCode(appointment.id) | async" alt="QR Code">
+            </div>
+          </td>
+          
         </tr>
       </tbody>
     </table>
