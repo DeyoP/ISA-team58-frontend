@@ -17,26 +17,28 @@ import { AdministratorRegistrationComponent } from './feature-modules/system-adm
 import { ChangePasswordComponent } from './feature-modules/account/change-password/change-password.component';
 import { CalendarComponent } from './feature-modules/company-administrator/calendar/calendar.component';
 import { CompanyAdminHomePageComponent } from './feature-modules/company-administrator/company-admin-home-page/company-admin-home-page.component';
+import { EquipmentReservationQrComponent } from './feature-modules/equipment/equipment-reservation-qr/equipment-reservation-qr.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'activate/:token', component: ActivationComponent },
-  { path: 'editUser', component: EditUserComponent},
+  { path: 'editUser', component: EditUserComponent },
   { path: 'company-registration', component: CompanyRegistrationComponent },
   { path: 'company-search', component: CompanySearchComponent },
   { path: 'equipment-search', component: EquipmentSearchComponent },
   { path: 'company/:id', component: CompanyOverviewComponent },
   { path: 'view-companies', component: ViewCompaniesComponent },
+  { path: 'equipmentReservationQR', component: EquipmentReservationQrComponent },
   { path: 'companies/:id', component: CompanyOverviewComponent },
   { path: 'companyAdministrator/:id', component: CompanyAdministratorOverviewComponent},
-  { path: 'company/:id/equipments', component: EquipmentOverviewComponent},
-  { path: 'availableTimeSlots', component: AvailableTimeSlotsOverviewComponent},
-  { path: 'complaints', component: ComplaintsComponent},
-  { path: 'administratorRegistration', component: AdministratorRegistrationComponent},
-  { path: 'change-password', component: ChangePasswordComponent},
-  { path: 'calendar', component: CalendarComponent},
-  { path: 'companyAdminHome', component: CompanyAdminHomePageComponent}
+  { path: 'company/:id/equipments', component: EquipmentOverviewComponent} ,
+  { path: 'availableTimeSlots', component: AvailableTimeSlotsOverviewComponent },
+  { path: 'complaints', component: ComplaintsComponent },
+  { path: 'administratorRegistration', component: AdministratorRegistrationComponent },
+  { path: 'change-password', component: ChangePasswordComponent },
+  { path: 'calendar', component: CalendarComponent },
+  { path: 'companyAdminHome', component: CompanyAdminHomePageComponent }
 ];
 
 @NgModule({
