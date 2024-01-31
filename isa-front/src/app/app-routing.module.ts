@@ -45,10 +45,9 @@ const routes: Routes = [
   { path: 'companyAdminHome', component: CompanyAdminHomePageComponent},
   { path: 'profile-overview', component: ProfileOverviewComponent},
   { path: 'profile-overview/edit-user', component: EditUserComponent},
-  { path: 'equipment-appointments', component: AppointmentsOverviewComponent}
+  { path: 'equipment-appointments', component: AppointmentsOverviewComponent},
   { path: 'profile-overview', component: ProfileOverviewComponent},
   { path: 'profile-overview/edit-user', component: EditUserComponent},
-  { path: 'equipment-appointments', component: AppointmentsOverviewComponent},
   { path: 'equipmentAppointment', component: EquipmentAppointmentComponent},
   { path: 'usersWithAppointment', component: UsersWithAppointmentComponent},
   { path: 'calendar/:companyId', component: CalendarComponent}
