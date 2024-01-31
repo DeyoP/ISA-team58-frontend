@@ -39,7 +39,7 @@ const routes: Routes = [
   { path: 'administratorRegistration', component: AdministratorRegistrationComponent},
   { path: 'change-password', component: ChangePasswordComponent},
   { path: 'calendar', component: CalendarComponent},
-  { path: 'companyAdminHome', component: CompanyAdminHomePageComponent}
+  { path: 'companyAdminHome', component: CompanyAdminHomePageComponent},
   { path: 'companyAdminHome', component: CompanyAdministratorOverviewComponent},
   { path: 'profile-overview', component: ProfileOverviewComponent},
   { path: 'profile-overview/edit-user', component: EditUserComponent},
