@@ -4,6 +4,9 @@ import { EquipmentAppointmentService } from '../../company/equipment-appointment
 import { Account } from 'src/app/shared/model/account.model';
 import { RegisteredUser } from 'src/app/shared/model/registered-user.model';
 import { AuthenticationService } from '../../auth/auth.service';
+import { CompanyService } from '../../company/company.service';
+import { Observable, catchError, map, of } from 'rxjs';
+import { Company } from 'src/app/shared/model/company.model';
 
 @Component({
   selector: 'app-appointments-overview',
@@ -12,11 +15,14 @@ import { AuthenticationService } from '../../auth/auth.service';
 })
 export class AppointmentsOverviewComponent {
   appointments: EquipmentAppointment[] = [];
+  takenAppointments: EquipmentAppointment[] = [];
 
   loggedInAccount: Account | null = null;
   loggedInRegisteredUser : RegisteredUser | null = null;
 
-  constructor(private service : EquipmentAppointmentService, private authService: AuthenticationService) {}
+  companies: { [companyId: number]: Company } = {};
+
+  constructor(private service : EquipmentAppointmentService, private authService: AuthenticationService, private companyService: CompanyService) {}
 
   ngOnInit(): void {
 
@@ -30,10 +36,29 @@ export class AppointmentsOverviewComponent {
       this.service.getAllReservedByUserId(this.loggedInAccount.id).subscribe({
         next: (result) => {
           this.appointments = result;
+          console.log(result);
+  
+          for(let appointment of result){
+            this.companyService.getCompanyById(appointment.companyId).subscribe({
+              next: (company: Company) => { console.log(company)
+                this.companies[appointment.companyId] = company;
+              }
+            })
+          }
+        }
+      })
+
+      this.service.getAllTakenByUserId(this.loggedInAccount.id).subscribe({
+        next: (result) => {
+          this.takenAppointments = result;
           console.log(result)
         }
       })
-    } console.log(this.loggedInRegisteredUser?.penaltyPoints);
+    } 
+  }
+
+  getReservedAppointments() : void {
+    
   }
 
   cancelAppointment(appointmentId : number) : void {
@@ -46,4 +71,15 @@ export class AppointmentsOverviewComponent {
       }
     });
   }
+
+  getCompanyName(companyId: number): Observable<string> {
+    return this.companyService.getCompanyById(companyId).pipe(
+      map((result) => result.name),
+      catchError((error) => {
+        console.error('Error fetching company:', error);
+        return of('Undefined');
+      })
+    );
+  }
+  
 }

@@ -33,8 +33,16 @@ export class EquipmentAppointmentService {
     return this.http.get<EquipmentAppointment[]>(`${this.apiUrl}/getAllReserved`);
   }
 
+  getAllTaken(): Observable<EquipmentAppointment[]> {
+    return this.http.get<EquipmentAppointment[]>(`${this.apiUrl}/getAllTaken`);
+  }
+
   getAllReservedByUserId(id: number): Observable<EquipmentAppointment[]> {
-    return this.http.get<EquipmentAppointment[]>(`${this.apiUrl}/getAllByUser/${id}`);
+    return this.http.get<EquipmentAppointment[]>(`${this.apiUrl}/getAllReservedByUser/${id}`);
+  }
+
+  getAllTakenByUserId(id: number): Observable<EquipmentAppointment[]> {
+    return this.http.get<EquipmentAppointment[]>(`${this.apiUrl}/getAllTakenByUser/${id}`);
   }
 
   getByCompanyId(companyId: number): Observable<EquipmentAppointment[]> {
