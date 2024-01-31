@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AvailableTimeSlots } from 'src/app/shared/model/available-time-slots.model';
 import { MatDialog } from '@angular/material/dialog';
 import { EquipmentAppointmentService } from '../equipment-appointment.service';
-import { EquipmentAppointment } from 'src/app/shared/model/equipmentAppointment.model';
+import { EquipmentAppointment, appointmentStatus } from 'src/app/shared/model/equipmentAppointment.model';
 import { AuthenticationService } from '../../auth/auth.service';
 
 @Component({
@@ -69,6 +69,7 @@ export class CompanyOverviewComponent implements OnInit {
         availableTimeSlotId: avaibleTimeSlot.id,
         extraordinary: false,
         companyId : this.company.id,
+        status : appointmentStatus.RESERVED,
       }
 
       this.equipmentAppointmentService.create(appointment).subscribe({
@@ -88,6 +89,7 @@ export class CompanyOverviewComponent implements OnInit {
         availableTimeSlotId: avaibleTimeSlot.id,
         extraordinary: true,
         companyId: this.company.id,
+        status: appointmentStatus.RESERVED,
       }
 
       this.equipmentAppointmentService.createExtraordinary(appointment).subscribe({

@@ -8,5 +8,6 @@ export interface RegisteredUser extends Account{
     phoneNumber: string;
     job: string;
     workplaceId: number;
+    penaltyPoints: number;
 }
 
