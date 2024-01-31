@@ -8,6 +8,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ProfileOverviewComponent } from './profile-overview/profile-overview.component';
 import { AppointmentsOverviewComponent } from './appointments-overview/appointments-overview.component';
+import { UsersWithAppointmentComponent } from './users-with-appointment/users-with-appointment.component';
 
 
 
@@ -19,7 +20,8 @@ import { AppointmentsOverviewComponent } from './appointments-overview/appointme
     EditUserComponent,
     ChangePasswordComponent,
     ProfileOverviewComponent,
-    AppointmentsOverviewComponent
+    AppointmentsOverviewComponent,
+    UsersWithAppointmentComponent
   ],
   imports: [
     CommonModule,
@@ -28,6 +30,7 @@ import { AppointmentsOverviewComponent } from './appointments-overview/appointme
   exports: [
     LoginComponent,
     RegisterComponent,
+    UsersWithAppointmentComponent
   ]
 })
 export class AccountModule { }

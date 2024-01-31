@@ -11,13 +11,13 @@
 <div *ngIf="isMenuOpen" class="sidebar">
   <ul>
     <li>
-      <a routerLink="lista-korisnika">Users who reserved the equipment</a>
+      <a [routerLink]="'/usersWithAppointment'">Users with appointment</a>
     </li>
     <li>
-      <a routerLink="unos-informacija">Taking over the equipment</a>
+      <a [routerLink]="'/equipmentAppointment'">Taking over the equipment</a>
     </li>
     <li>
-      <a [routerLink]="'/calendar'">Work calendar</a>
+      <a [routerLink]="'/calendar/' + companyId">Work calendar</a>
     </li>
     <li>
       <a [routerLink]="'/availableTimeSlots'">Scheduling new appointment</a>

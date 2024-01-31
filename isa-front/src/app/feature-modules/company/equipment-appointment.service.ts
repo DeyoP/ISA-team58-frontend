@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 import { EquipmentAppointment } from 'src/app/shared/model/equipmentAppointment.model';
+import { RegisteredUser } from 'src/app/shared/model/registered-user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -60,5 +61,23 @@ export class EquipmentAppointmentService {
   getQRCode(id: number): Observable<Blob> {
     // Set the responseType to 'blob' to handle binary data
     return this.http.get(`${this.apiUrl}/getQRCode/${id}`, { responseType: 'blob' });
+  }
+  
+  markAppointmentAsTaken(id: number, adminId: number): Observable<EquipmentAppointment> {
+    const url = `${this.apiUrl}/${id}/markAsTaken?administratorId=${adminId}`;
+    return this.http.post(url, {}).pipe(
+      map(response => response as EquipmentAppointment),
+      catchError((error) => {
+        if (error instanceof HttpErrorResponse && error.status === 200) {
+          return of(error.error as EquipmentAppointment);
+        } else {
+          throw error;
+        }
+      })
+    );
+  }
+  
+  getUsersWithAppointment(): Observable<RegisteredUser[]> {
+    return this.http.get<RegisteredUser[]>(`${this.apiUrl}/usersWithAppointment`);
   }
 }

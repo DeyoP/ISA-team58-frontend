@@ -1,0 +1,29 @@
+<div class="equipment-appointment">
+    <h1>Equipment Appointment</h1>
+   
+    <table class="appointment-table">
+        <thead>
+            <tr>
+                <th>Equipment</th>
+                <th>Available time slot</th>
+                <th>User</th>
+                <th>Company</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let appointment of appointments">
+              <td class="equipment">{{ appointment.equipmentId }}</td>
+              <td class="time">{{ appointment.availableTimeSlotId }}</td>
+              <td class="user">{{ appointment.userId }}</td>
+              <td class="company">{{ appointment.companyId }}</td>
+              <td class="status">{{ appointment.status }}</td>
+              <td>
+                <button type="button" (click)="takenEquipment(appointment)" class="taken-button">Taken</button>
+              </td>
+            </tr>
+          </tbody>
+    </table>
+      
+</div>

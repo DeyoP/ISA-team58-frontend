@@ -20,7 +20,8 @@ import { CompanyAdminHomePageComponent } from './feature-modules/company-adminis
 import { ProfileOverviewComponent } from './feature-modules/account/profile-overview/profile-overview.component';
 import { AppointmentsOverviewComponent } from './feature-modules/account/appointments-overview/appointments-overview.component';
 import { EquipmentReservationQrComponent } from './feature-modules/equipment/equipment-reservation-qr/equipment-reservation-qr.component';
-//import { CompanyAdminHomePageComponent } from './feature-modules/company-administrator/company-admin-home-page/company-admin-home-page.component';
+import { EquipmentAppointmentComponent } from './feature-modules/company/equipment-appointment/equipment-appointment.component';
+import { UsersWithAppointmentComponent } from './feature-modules/account/users-with-appointment/users-with-appointment.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -42,10 +43,15 @@ const routes: Routes = [
   { path: 'change-password', component: ChangePasswordComponent},
   { path: 'calendar', component: CalendarComponent},
   { path: 'companyAdminHome', component: CompanyAdminHomePageComponent},
-  { path: 'companyAdminHome', component: CompanyAdministratorOverviewComponent},
   { path: 'profile-overview', component: ProfileOverviewComponent},
   { path: 'profile-overview/edit-user', component: EditUserComponent},
   { path: 'equipment-appointments', component: AppointmentsOverviewComponent}
+  { path: 'profile-overview', component: ProfileOverviewComponent},
+  { path: 'profile-overview/edit-user', component: EditUserComponent},
+  { path: 'equipment-appointments', component: AppointmentsOverviewComponent},
+  { path: 'equipmentAppointment', component: EquipmentAppointmentComponent},
+  { path: 'usersWithAppointment', component: UsersWithAppointmentComponent},
+  { path: 'calendar/:companyId', component: CalendarComponent}
 ];
 
 @NgModule({

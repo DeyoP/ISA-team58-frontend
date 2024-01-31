@@ -1,0 +1,15 @@
+<div class="usersWithAppointment">
+    <h1>Users with appointment:</h1>
+    <ul>
+      <li *ngFor="let user of users">
+        <div>
+          <strong class="firstName">First Name:</strong> {{ user.firstName }}<br>
+          <strong class="lastName">Last Name:</strong> {{ user.lastName }}<br>
+          <strong class="email">Email:</strong> {{ user.email }}<br>
+          <strong class="phoneNumber">Phone number:</strong> {{ user.phoneNumber }}<br>
+          <strong class="residence">User's place of residence:</strong> {{ user.city }}, {{ user.country }}<br>
+        </div>
+        <hr>
+      </li>
+    </ul>
+</div>

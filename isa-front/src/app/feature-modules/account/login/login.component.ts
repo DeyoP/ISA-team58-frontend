@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Account } from 'src/app/shared/model/account.model';
 import { AuthenticationService } from '../../auth/auth.service';
 import { SystemAdministrator } from 'src/app/shared/model/system-administrator.model';
+import { CompanyAdministrator } from 'src/app/shared/model/company-administrator.model';
 
 @Component({
   selector: 'app-login',
@@ -70,7 +71,7 @@ export class LoginComponent implements OnInit {
                     this.router.navigate(['/change-password']);
                   } else {
                     console.log('Not first login. Redirecting to /');
-                    this.router.navigate(['/']);
+                    this.router.navigate(['/companyAdminHome']);
                   }
                 } else {
                   console.log('Account does not have "firstLogin" property. Redirecting to /');

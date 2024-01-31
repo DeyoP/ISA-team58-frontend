@@ -12,6 +12,7 @@ export enum appointmentStatus{
   RESERVED, 
   TAKEN, 
   RETURNED, 
-  CANCELLED
+  CANCELLED,
+  REJECTED
 }
   

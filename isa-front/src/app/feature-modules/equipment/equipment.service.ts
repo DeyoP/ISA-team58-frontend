@@ -35,5 +35,9 @@ export class EquipmentService {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<Equipment>(url);
   }
-
+   
+  getEquipmentName(id: number): Observable<string> {
+    const url = `${this.apiUrl}/${id}/name`;
+    return this.http.get<string>(url);
+  }
 }

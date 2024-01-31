@@ -14,12 +14,14 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { CompanyAdministratorModule } from '../company-administrator/company-administrator.module';
 import { AppointmentModalComponent } from './appointment-modal/appointment-modal.component';
+import { EquipmentAppointmentComponent } from './equipment-appointment/equipment-appointment.component';
 
 @NgModule({
   declarations: [
     CompanyOverviewComponent,
     ViewCompaniesComponent,
     AppointmentModalComponent,
+    EquipmentAppointmentComponent,
   ],
   imports: [
     CommonModule,
@@ -35,7 +37,8 @@ import { AppointmentModalComponent } from './appointment-modal/appointment-modal
     CompanyAdministratorModule,
   ],
   exports: [
-    CompanyOverviewComponent
+    CompanyOverviewComponent,
+    EquipmentAppointmentComponent
   ]
 })
 export class CompanyModule { }
