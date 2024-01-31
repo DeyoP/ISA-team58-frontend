@@ -28,6 +28,14 @@ export class EquipmentReservationQrComponent {
   uploadImage() {
     const formData = new FormData();
     formData.append('qrCodeImage', this.currentFile!);
-    this.http.post<any>('http://localhost:5555/equipmentAppointment/takeEquipment', formData).subscribe();
+    this.http.post<any>('http://localhost:5555/equipmentAppointment/takeEquipment', formData).subscribe({
+      next: (result) => {
+        if (result === true) {
+          alert('Equipment taken successfully!');
+        } else {
+          alert('Equipment not taken successfully!');
+        }
+      }
+    });
   }
 }
